@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Case Duplicate Checker</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f6f8;
+  --white: #ffffff;
+  --border: #dde1e7;
+  --border2: #c8cdd6;
+  --text: #1a1d23;
+  --muted: #6b7280;
+  --subtle: #9ca3af;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --accent-border: #bfdbfe;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --red-text: #991b1b;
+  --green: #16a34a;
+  --green-bg: #f0fdf4;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --radius: 6px;
+  --radius-lg: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Layout ──────────────────────────────────────────────────────── */
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+
+.page-header {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── Upload zone ─────────────────────────────────────────────────── */
+
+.upload-zone {
+  background: var(--white);
+  border: 1.5px dashed var(--border2);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  margin-bottom: 24px;
+}
+
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.upload-zone svg {
+  display: block;
+  margin: 0 auto 12px;
+  color: var(--subtle);
+}
+
+.upload-zone:hover svg, .upload-zone.drag-over svg {
+  color: var(--accent);
+}
+
+.upload-zone strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.upload-zone span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+#file-input { display: none; }
+
+/* ── File badge ──────────────────────────────────────────────────── */
+
+.file-badge {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.file-badge.show { display: flex; }
+
+.file-badge svg { color: var(--accent); flex-shrink: 0; }
+.file-badge-name { flex: 1; font-size: 13px; font-weight: 500; color: var(--text); }
+.file-badge-size { font-size: 12px; color: var(--muted); }
+
+.btn-reload {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-reload:hover { border-color: var(--border2); color: var(--text); }
+
+/* ── Stats strip ─────────────────────────────────────────────────── */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card.highlight { border-color: var(--red-border); background: var(--red-bg); }
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-card.highlight .stat-value { color: var(--red); }
+.stat-label { font-size: 12px; color: var(--muted); }
+
+/* ── Legend ──────────────────────────────────────────────────────── */
+
+.legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.dup { background: var(--red); }
+.legend-dot.ok { background: var(--border2); }
+
+/* ── Toolbar ─────────────────────────────────────────────────────── */
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.search-wrap svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--subtle);
+  pointer-events: none;
+}
+
+.search-wrap input {
+  width: 100%;
+  padding: 8px 12px 8px 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search-wrap input:focus { border-color: var(--accent); }
+.search-wrap input::placeholder { color: var(--subtle); }
+
+.filter-group {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-btn {
+  background: var(--white);
+  border: none;
+  border-right: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font);
+  font-size: 12px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.filter-btn:last-child { border-right: none; }
+.filter-btn:hover { background: var(--bg); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: #fff; }
+.filter-btn.active:hover { background: #1d4ed8; }
+
+/* ── Expand/collapse all ─────────────────────────────────────────── */
+
+.toolbar-right {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-sm {
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font);
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+}
+
+.btn-sm:hover { border-color: var(--border2); color: var(--text); }
+
+/* ── Test case cards ─────────────────────────────────────────────── */
+
+.tc-list { display: flex; flex-direction: column; gap: 10px; }
+
+.tc-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.tc-card.has-dups { border-left: 3px solid var(--red); }
+
+.tc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.1s;
+}
+
+.tc-head:hover { background: var(--bg); }
+
+.tc-arrow {
+  color: var(--subtle);
+  font-size: 10px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.tc-card.open .tc-arrow { transform: rotate(90deg); }
+
+.tc-title {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.tc-chips { display: flex; gap: 6px; flex-shrink: 0; }
+
+.chip {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.chip-steps {
+  background: var(--bg);
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.chip-dup {
+  background: var(--red-bg);
+  color: var(--red-text);
+  border-color: var(--red-border);
+}
+
+.chip-ok {
+  background: var(--green-bg);
+  color: var(--green);
+  border-color: #bbf7d0;
+}
+
+/* ── Step list ───────────────────────────────────────────────────── */
+
+.tc-body {
+  display: none;
+  border-top: 1px solid var(--border);
+  padding: 12px;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tc-card.open .tc-body { display: flex; }
+
+.step {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.step.is-dup { border-color: var(--red-border); }
+
+.step-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.1s;
+  background: var(--white);
+}
+
+.step-head:hover { background: var(--bg); }
+.step.is-dup .step-head { background: var(--red-bg); }
+.step.is-dup .step-head:hover { background: #fee2e2; }
+
+.step-num {
+  font-size: 11px;
+  color: var(--subtle);
+  flex-shrink: 0;
+  margin-top: 2px;
+  min-width: 18px;
+  text-align: right;
+}
+
+.step-req {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.dup-badge {
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--red);
+  color: #fff;
+  padding: 1px 7px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  letter-spacing: 0.02em;
+}
+
+.step-meta {
+  font-size: 11px;
+  color: var(--subtle);
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* ── Step detail ─────────────────────────────────────────────────── */
+
+.step-detail {
+  display: none;
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--border);
+  background: #fafbfc;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.step.is-dup .step-detail { background: #fff5f5; border-color: var(--red-border); }
+.step.sopen .step-detail { display: flex; }
+
+.triple-row {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.7;
+  padding: 1px 0;
+}
+
+.t-punc { color: var(--subtle); }
+.t-subject { color: #1d4ed8; }
+.t-pred { color: #059669; }
+.t-object { color: #b45309; }
+
+.annot-row {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.dup-section {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--red-border);
+}
+
+.dup-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--red-text);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dup-ref-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 5px 8px;
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius);
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+.dup-ref-item:last-child { margin-bottom: 0; }
+.dup-ref-item:hover { background: #fee2e2; border-color: #fca5a5; }
+.dup-ref-tc { font-weight: 500; color: var(--red-text); }
+.dup-ref-req { color: var(--muted); margin-top: 1px; font-size: 11px; }
+
+/* ── Empty state ─────────────────────────────────────────────────── */
+
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .toolbar { flex-wrap: wrap; }
+  .toolbar-right { width: 100%; }
+}
+
+/* ── Tab nav ─────────────────────────────────────────────────────── */
+.tab-nav {
+  display: flex;
+  gap: 2px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  margin-bottom: 24px;
+  width: fit-content;
+  box-shadow: var(--shadow-sm);
+}
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.15s;
+}
+.tab-btn.active { background: var(--accent); color: #fff; }
+.tab-btn:hover:not(.active) { background: var(--bg); color: var(--text); }
+
+/* ── Popover ─────────────────────────────────────────────────────── */
+.popover {
+  position: fixed;
+  z-index: 9999;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08);
+  width: 300px;
+  font-size: 13px;
+  display: none;
+}
+.popover.show { display: block; }
+.popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.popover-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 14px;
+}
+.popover-type {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+.popover-body { padding: 10px 14px; }
+.popover-field { margin-bottom: 8px; }
+.popover-field:last-child { margin-bottom: 0; }
+.popover-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--subtle);
+  margin-bottom: 2px;
+}
+.popover-value { font-size: 13px; color: var(--text); line-height: 1.5; }
+.popover-value.empty { color: var(--subtle); font-style: italic; }
+.popover-foot {
+  padding: 8px 14px 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+.popover-edit-btn {
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.popover-edit-btn:hover { background: var(--accent); color: #fff; }
+
+/* ── Clickable entity in triple ──────────────────────────────────── */
+.entity-link {
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+.entity-link:hover { opacity: 0.75; }
+
+/* ── Element dict tab ────────────────────────────────────────────── */
+.dict-toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+.dict-search-wrap { position: relative; flex: 1; }
+.dict-search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--subtle); pointer-events: none; }
+.dict-search-wrap input { width: 100%; padding: 8px 12px 8px 34px; border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--font); font-size: 13px; background: var(--white); box-shadow: var(--shadow-sm); outline: none; transition: border-color 0.15s; }
+.dict-search-wrap input:focus { border-color: var(--accent); }
+.dict-search-wrap input::placeholder { color: var(--subtle); }
+.btn-add-elem {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.btn-add-elem:hover { background: #1d4ed8; }
+
+.dict-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+.dict-table th { background: var(--bg); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+.dict-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--text); vertical-align: top; }
+.dict-table tr:last-child td { border-bottom: none; }
+.dict-table tr:hover td { background: var(--bg); }
+.dict-type-chip { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; border: 1px solid var(--accent-border); background: var(--accent-bg); color: var(--accent); white-space: nowrap; }
+.dict-desc { color: var(--muted); font-size: 12px; }
+.dict-desc.empty { font-style: italic; color: var(--subtle); }
+.dict-actions { display: flex; gap: 6px; }
+.btn-dict-edit, .btn-dict-del {
+  background: none;
+  border: 1px solid var(--border);
+  font-family: var(--font);
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-dict-edit { color: var(--accent); }
+.btn-dict-edit:hover { background: var(--accent-bg); border-color: var(--accent-border); }
+.btn-dict-del { color: var(--red); }
+.btn-dict-del:hover { background: var(--red-bg); border-color: var(--red-border); }
+
+/* ── Edit modal ──────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.35);
+  z-index: 10000; display: none; align-items: center; justify-content: center;
+}
+.modal-overlay.show { display: flex; }
+.modal {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  width: 480px;
+  max-width: 95vw;
+}
+.modal-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.modal-head h2 { font-size: 15px; font-weight: 600; color: var(--text); }
+.modal-close {
+  background: none; border: none; font-size: 18px; color: var(--muted);
+  cursor: pointer; line-height: 1; padding: 2px 6px; border-radius: var(--radius);
+}
+.modal-close:hover { background: var(--bg); color: var(--text); }
+.modal-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-label { font-size: 12px; font-weight: 500; color: var(--muted); }
+.form-input, .form-select, .form-textarea {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 13px;
+  padding: 8px 10px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+  background: var(--white);
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
+.form-textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
+.modal-foot {
+  display: flex; justify-content: flex-end; gap: 8px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+}
+.btn-cancel {
+  background: none; border: 1px solid var(--border); color: var(--muted);
+  font-family: var(--font); font-size: 13px; padding: 7px 16px;
+  border-radius: var(--radius); cursor: pointer; transition: all 0.15s;
+}
+.btn-cancel:hover { border-color: var(--border2); color: var(--text); }
+.btn-save-elem {
+  background: var(--accent); border: none; color: #fff;
+  font-family: var(--font); font-size: 13px; font-weight: 500;
+  padding: 7px 18px; border-radius: var(--radius); cursor: pointer; transition: all 0.15s;
+}
+.btn-save-elem:hover { background: #1d4ed8; }
+.dict-empty { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 13px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-header">
+    <h1>Test Case Duplicate Checker</h1>
+    <p>Upload <code>test_cases.txt</code> to view steps, identify duplicates, and explore the element dictionary.</p>
+  </div>
+
+
+  <!-- Tab navigation -->
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('checker', this)">Duplicate Checker</button>
+    <button class="tab-btn" onclick="switchTab('dict', this)">Element Dictionary</button>
+  </div>
+
+  <div class="upload-zone" id="upload-zone">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+      <polyline points="14,2 14,8 20,8"/>
+      <line x1="12" y1="18" x2="12" y2="12"/>
+      <polyline points="9,15 12,12 15,15"/>
+    </svg>
+    <strong>Drop test_cases.txt here</strong>
+    <span>or click to browse · optionally also drop element_dict.json to pre-fill definitions</span>
+    <input type="file" id="file-input" accept=".txt">
+    <input type="file" id="dict-input" accept=".json" style="display:none">
+  </div>
+
+  <div class="file-badge" id="file-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+      <polyline points="14,2 14,8 20,8"/>
+    </svg>
+    <span class="file-badge-name" id="badge-name"></span>
+    <span class="file-badge-size" id="badge-size"></span>
+    <button class="btn-reload" onclick="resetToUpload()">Load another file</button>
+  </div>
+
+  <div id="main-content" style="display:none">
+
+    <div class="stats-grid" id="stats-grid"></div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot dup"></div>
+        <span>Duplicate step — same triples found in one or more other test cases</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot ok"></div>
+        <span>Unique step</span>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search" placeholder="Search by step text or test case name…" oninput="applyFilter()">
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">All steps</button>
+        <button class="filter-btn" data-filter="dup" onclick="setFilter('dup', this)">Duplicates only</button>
+        <button class="filter-btn" data-filter="unique" onclick="setFilter('unique', this)">Unique only</button>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn-sm" onclick="expandAll()">Expand all</button>
+        <button class="btn-sm" onclick="collapseAll()">Collapse all</button>
+      </div>
+    </div>
+
+    <div class="tc-list" id="tc-list"></div>
+
+  </div>
+
+
+  <!-- Element Dictionary Tab -->
+  <div id="dict-panel" style="display:none">
+    <div class="dict-toolbar">
+      <div class="dict-search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="dict-search" placeholder="Search elements…" oninput="renderDict()">
+      </div>
+      <button class="btn-add-elem" onclick="openModal(null)">+ Add element</button>
+    </div>
+    <div id="dict-content"></div>
+  </div>
+
+  <!-- Popover (shared, positioned by JS) -->
+  <div class="popover" id="popover">
+    <div class="popover-head">
+      <span class="popover-name" id="pop-name"></span>
+      <span class="popover-type" id="pop-type"></span>
+    </div>
+    <div class="popover-body">
+      <div class="popover-field">
+        <div class="popover-label">Location</div>
+        <div class="popover-value" id="pop-location"></div>
+      </div>
+      <div class="popover-field">
+        <div class="popover-label">Description</div>
+        <div class="popover-value" id="pop-desc"></div>
+      </div>
+    </div>
+    <div class="popover-foot">
+      <button class="popover-edit-btn" id="pop-edit-btn">Edit in dictionary</button>
+    </div>
+  </div>
+
+  <!-- Edit / Add modal -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="modal-title">Add element</h2>
+        <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="modal-key">
+        <div class="form-group">
+          <label class="form-label">Element name</label>
+          <input class="form-input" id="modal-name" placeholder="e.g. Settings">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type</label>
+          <select class="form-select" id="modal-type">
+            <option value="">— select type —</option>
+            <option>Icon</option><option>Button</option><option>Modal</option>
+            <option>Page</option><option>Dropdown</option><option>Input</option>
+            <option>Toggle</option><option>Switch</option><option>Checkbox</option>
+            <option>Menu</option><option>Link</option><option>Tab</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Location on screen</label>
+          <input class="form-input" id="modal-location" placeholder="e.g. Test Scenario Settings Modal → top right">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description / purpose</label>
+          <textarea class="form-textarea" id="modal-desc" placeholder="e.g. Opens the settings panel where the tester configures environment, browser, and toggles"></textarea>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn-save-elem" onclick="saveElement()">Save element</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+// ── Element dictionary ────────────────────────────────────────────
+// Stored as { [name_lowercase]: { name, type, location, desc } }
+let elementDict = {};
+
+const DICT_KEY = 'tc_element_dict_v1';
+
+function loadDict() {
+  try { elementDict = JSON.parse(localStorage.getItem(DICT_KEY) || '{}'); }
+  catch { elementDict = {}; }
+}
+
+function mergeFromExtractor() {
+  // Pull enrichment written by triple extractor into this dict
+  try {
+    const raw = sessionStorage.getItem('elem_enrichment');
+    if (!raw) return;
+    const enrichment = JSON.parse(raw);
+    let changed = false;
+    for (const [key, val] of Object.entries(enrichment)) {
+      if (!elementDict[key]) {
+        elementDict[key] = { name: val.name || key, type: val.type || '', location: val.location || '', desc: val.desc || '' };
+        changed = true;
+      } else {
+        if (!elementDict[key].location && val.location) { elementDict[key].location = val.location; changed = true; }
+        if (!elementDict[key].desc     && val.desc)     { elementDict[key].desc     = val.desc;     changed = true; }
+        if (!elementDict[key].type     && val.type)     { elementDict[key].type     = val.type;     changed = true; }
+      }
+    }
+    if (changed) saveDict();
+  } catch {}
+}
+
+function saveDict() {
+  try { localStorage.setItem(DICT_KEY, JSON.stringify(elementDict)); }
+  catch {}
+}
+
+function dictKey(name) { return name.trim().toLowerCase(); }
+
+function mergeElemDictFile(data) {
+  // Merge element_dict.json — keys are "TC Title | Entity Name"
+  for (const [key, val] of Object.entries(data)) {
+    if (!elementDict[key]) {
+      elementDict[key] = val;
+    } else {
+      if (!elementDict[key].location && val.location) elementDict[key].location = val.location;
+      if (!elementDict[key].desc     && val.desc)     elementDict[key].desc     = val.desc;
+      if (!elementDict[key].type     && val.type)     elementDict[key].type     = val.type;
+    }
+  }
+  saveDict();
+}
+
+function lookupEntity(entityName, tcTitle) {
+  // 1. Try TC-scoped key first: "TC Title | Entity Name"
+  if (tcTitle) {
+    const scoped = tcTitle + ' | ' + entityName;
+    if (elementDict[scoped]) return elementDict[scoped];
+  }
+  // 2. Fallback: find any entry where name matches (case-insensitive)
+  const lower = entityName.toLowerCase();
+  return Object.values(elementDict).find(e =>
+    e.name && e.name.toLowerCase() === lower
+  ) || null;
+}
+
+// Auto-extract from parsed test cases — pull all annotations [Name :: Type]
+function autoExtract(testCases) {
+  for (const tc of testCases) {
+    for (const step of tc.steps) {
+      for (const a of step.annotations) {
+        const m = a.match(/\[(.+?)\s*::\s*(.+?)\]/);
+        if (!m) continue;
+        const name = m[1].trim();
+        const type = m[2].trim();
+        const k    = dictKey(name);
+        if (!elementDict[k]) {
+          elementDict[k] = { name, type, location: '', desc: '' };
+        } else if (!elementDict[k].type) {
+          elementDict[k].type = type;
+        }
+      }
+    }
+  }
+  saveDict();
+}
+
+function renderDict() {
+  const q = document.getElementById('dict-search').value.toLowerCase().trim();
+  const container = document.getElementById('dict-content');
+  const entries = Object.values(elementDict)
+    .filter(e => !q || e.name.toLowerCase().includes(q) || (e.type || '').toLowerCase().includes(q))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  if (!entries.length) {
+    container.innerHTML = '<div class="dict-empty">No elements found. Load a <code>test_cases.txt</code> file to auto-extract elements, or add them manually.</div>';
+    return;
+  }
+
+  container.innerHTML = `<table class="dict-table">
+    <thead><tr>
+      <th>Element</th><th>Type</th><th>Location</th><th>Description</th><th></th>
+    </tr></thead>
+    <tbody>${entries.map(e => `
+      <tr>
+        <td style="font-weight:500">${esc(e.name)}</td>
+        <td>${e.type ? `<span class="dict-type-chip">${esc(e.type)}</span>` : '<span style="color:var(--subtle);font-size:12px">—</span>'}</td>
+        <td class="dict-desc ${e.location ? '' : 'empty'}">${e.location ? esc(e.location) : 'Not set'}</td>
+        <td class="dict-desc ${e.desc ? '' : 'empty'}">${e.desc ? esc(e.desc) : 'Not set'}</td>
+        <td><div class="dict-actions">
+          <button class="btn-dict-edit" onclick="openModal('${dictKey(e.name)}')">Edit</button>
+          <button class="btn-dict-del" onclick="deleteElement('${dictKey(e.name)}')">Delete</button>
+        </div></td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+function deleteElement(k) {
+  delete elementDict[k];
+  saveDict();
+  renderDict();
+}
+
+// ── Modal ─────────────────────────────────────────────────────────
+function openModal(key) {
+  const e = key ? elementDict[key] : null;
+  document.getElementById('modal-title').textContent = e ? 'Edit element' : 'Add element';
+  document.getElementById('modal-key').value      = key || '';
+  document.getElementById('modal-name').value     = e ? e.name     : '';
+  document.getElementById('modal-type').value     = e ? e.type     : '';
+  document.getElementById('modal-location').value = e ? e.location : '';
+  document.getElementById('modal-desc').value     = e ? e.desc     : '';
+  document.getElementById('modal-overlay').classList.add('show');
+  document.getElementById('modal-name').focus();
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('show');
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+function saveElement() {
+  const oldKey  = document.getElementById('modal-key').value;
+  const name    = document.getElementById('modal-name').value.trim();
+  const type    = document.getElementById('modal-type').value;
+  const location= document.getElementById('modal-location').value.trim();
+  const desc    = document.getElementById('modal-desc').value.trim();
+  if (!name) { document.getElementById('modal-name').focus(); return; }
+
+  if (oldKey && oldKey !== dictKey(name)) delete elementDict[oldKey];
+  elementDict[dictKey(name)] = { name, type, location, desc };
+  saveDict();
+  closeModal();
+  renderDict();
+}
+
+// ── Popover ───────────────────────────────────────────────────────
+let popoverTarget = null;
+
+function openElemPopover(entityName, anchorEl) {
+  const tcCard  = anchorEl.closest('.tc-card');
+  const tcTitle = tcCard ? (tcCard.querySelector('.tc-title')?.textContent?.trim() || '') : '';
+  const e = lookupEntity(entityName, tcTitle);
+  const k = dictKey(entityName);
+  const pop = document.getElementById('popover');
+
+  document.getElementById('pop-name').textContent = entityName;
+  document.getElementById('pop-type').textContent = (e && e.type) ? e.type : 'Unknown';
+  document.getElementById('pop-type').style.display = (e && e.type) ? '' : 'none';
+
+  const locEl = document.getElementById('pop-location');
+  locEl.textContent  = (e && e.location) ? e.location : 'Not set';
+  locEl.className    = 'popover-value' + ((e && e.location) ? '' : ' empty');
+
+  const descEl = document.getElementById('pop-desc');
+  descEl.textContent = (e && e.desc) ? e.desc : 'No description yet — click Edit to add one.';
+  descEl.className   = 'popover-value' + ((e && e.desc) ? '' : ' empty');
+
+  // Use TC-scoped key for editing
+  const scopedKey = tcTitle ? `${tcTitle} | ${entityName}` : k;
+  document.getElementById('pop-edit-btn').onclick = () => {
+    closePopover();
+    if (!elementDict[scopedKey]) {
+      elementDict[scopedKey] = { name: entityName, type: e?.type || '', test_case: tcTitle, location: e?.location || '', desc: e?.desc || '' };
+    }
+    switchTab('dict', document.querySelectorAll('.tab-btn')[1]);
+    setTimeout(() => openModal(scopedKey), 50);
+  };
+
+  // Position popover near anchor
+  pop.classList.add('show');
+  const rect = anchorEl.getBoundingClientRect();
+  const pw = pop.offsetWidth  || 300;
+  const ph = pop.offsetHeight || 180;
+  let left = rect.left + window.scrollX;
+  let top  = rect.bottom + window.scrollY + 6;
+  if (left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+  if (top + ph  > window.innerHeight + window.scrollY - 12) top = rect.top + window.scrollY - ph - 6;
+  pop.style.left = left + 'px';
+  pop.style.top  = top  + 'px';
+
+  popoverTarget = anchorEl;
+}
+
+function closePopover() {
+  document.getElementById('popover').classList.remove('show');
+  popoverTarget = null;
+}
+
+document.addEventListener('click', e => {
+  // Handle entity-link clicks via delegation — avoids inline onclick and browser API conflict
+  const link = e.target.closest('.entity-link');
+  if (link) {
+    e.stopPropagation();
+    openElemPopover(link.dataset.entity, link);
+    return;
+  }
+  // Close popover on outside click
+  const pop = document.getElementById('popover');
+  if (!pop.classList.contains('hidden') && !pop.contains(e.target)) {
+    closePopover();
+  }
+});
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePopover(); closeModal(); } });
+
+// ── Tab switching ─────────────────────────────────────────────────
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const checkerEls = ['upload-zone', 'file-badge', 'main-content'];
+  checkerEls.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = tab === 'checker' ? '' : 'none';
+  });
+  document.getElementById('dict-panel').style.display = tab === 'dict' ? 'block' : 'none';
+  if (tab === 'dict') renderDict();
+}
+
+let allData = [];
+let currentFilter = 'all';
+
+loadDict(); // load element dictionary from localStorage on startup
+mergeFromExtractor(); // pull any enrichment data saved by triple extractor
+
+// ── Upload ────────────────────────────────────────────────────────
+
+const zone  = document.getElementById('upload-zone');
+const input = document.getElementById('file-input');
+
+zone.addEventListener('click', () => input.click());
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+zone.addEventListener('drop', e => {
+  e.preventDefault(); zone.classList.remove('drag-over');
+  const f = e.dataTransfer.files[0];
+  if (f && f.name.endsWith('.txt')) loadFile(f);
+});
+input.addEventListener('change', () => { if (input.files[0]) loadFile(input.files[0]); });
+
+function loadFile(f) {
+  document.getElementById('badge-name').textContent = f.name;
+  document.getElementById('badge-size').textContent = (f.size / 1024).toFixed(1) + ' KB';
+  document.getElementById('file-badge').classList.add('show');
+  zone.style.display = 'none';
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    allData = parseFile(e.target.result);
+    autoExtract(allData);
+    render();
+    renderDict();
+  };
+  reader.readAsText(f);
+}
+
+// Handle element_dict.json upload
+const dictFileInput = document.getElementById('dict-input');
+
+// Allow dropping JSON onto the same zone
+zone.addEventListener('drop', e => {
+  const jsonFile = Array.from(e.dataTransfer.files).find(f => f.name.endsWith('.json'));
+  if (jsonFile) loadDictFile(jsonFile);
+}, true);
+
+function loadDictFile(f) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      mergeElemDictFile(data);
+      renderDict();
+      // Show small notice
+      const notice = document.createElement('div');
+      notice.style.cssText = 'font-size:12px;color:var(--green);margin-bottom:8px;padding:6px 12px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:var(--radius)';
+      notice.textContent = `element_dict.json loaded — ${Object.keys(data).length} elements merged`;
+      document.getElementById('file-badge').after(notice);
+      setTimeout(() => notice.remove(), 4000);
+    } catch { alert('Invalid JSON file'); }
+  };
+  reader.readAsText(f);
+}
+
+function resetToUpload() {
+  zone.style.display = '';
+  document.getElementById('file-badge').classList.remove('show');
+  document.getElementById('main-content').style.display = 'none';
+  input.value = '';
+  allData = [];
+}
+
+// ── Parser ────────────────────────────────────────────────────────
+
+function parseFile(text) {
+  const lines = text.split('\n');
+  const testCases = [];
+  let currentTC   = null;
+  let currentStep = null;
+
+  const isRunHeader = l => /^={3,}/.test(l.trim());
+  const isRunMeta   = l => l.trim().startsWith('Run:');
+  const isTCHeader  = l => /^--\s+/.test(l.trim());
+  const isTriple    = l => /^\s*\(.+?,\s*[A-Z_]+\s*,.+?\)\s*$/.test(l.trim());
+  const isAnnot     = l => /^\s*\[.+?::.+?\]\s*$/.test(l.trim());
+
+  let stepCounter = 0;
+
+  function flushStep() {
+    if (currentStep && currentTC && currentStep.triples.length > 0) {
+      currentStep.stepId  = 'step_' + (stepCounter++);
+      currentStep.stepNum = currentTC.steps.length + 1;  // 1-based position within TC
+      currentTC.steps.push(currentStep);
+    }
+    currentStep = null;
+  }
+
+  function flushTC() {
+    flushStep();
+    if (currentTC && currentTC.steps.length > 0) testCases.push(currentTC);
+    currentTC = null;
+  }
+
+  for (const raw of lines) {
+    const l = raw.trim();
+
+    if (isRunHeader(l)) { flushTC(); continue; }
+    if (isRunMeta(l))   { continue; }
+
+    if (isTCHeader(l)) {
+      flushTC();
+      const title = l.replace(/^-+\s*/, '').replace(/\s*-+$/, '').trim();
+      if (title) currentTC = { title, steps: [] };
+      continue;
+    }
+
+    if (!currentTC) continue;
+
+    if (isTriple(l)) {
+      if (currentStep) currentStep.triples.push(l);
+      continue;
+    }
+
+    if (isAnnot(l)) {
+      if (currentStep) currentStep.annotations.push(l);
+      continue;
+    }
+
+    if (l === '') { flushStep(); continue; }
+
+    // Requirement line
+    flushStep();
+    currentStep = { requirement: l, triples: [], annotations: [] };
+  }
+
+  flushTC();
+
+  // ── Duplicate detection ───────────────────────────────────────
+  const fpMap = {};
+
+  for (const tc of testCases) {
+    for (const step of tc.steps) {
+      const fp = step.triples.map(t => t.trim().toLowerCase()).sort().join('|||');
+      step.fingerprint = fp;
+      if (!fpMap[fp]) fpMap[fp] = [];
+      fpMap[fp].push({ tcTitle: tc.title, requirement: step.requirement, stepId: step.stepId, stepNum: step.stepNum });
+    }
+  }
+
+  for (const tc of testCases) {
+    let dupCount = 0;
+    for (const step of tc.steps) {
+      const group = fpMap[step.fingerprint];
+      if (group && group.length > 1) {
+        step.isDup = true;
+
+        // List every occurrence except the current step — include step number
+        const otherRefs = group.filter(g =>
+          !(g.tcTitle === tc.title && g.stepId === step.stepId)
+        );
+
+        step.dupRefs = otherRefs;  // all occurrences, no deduplication
+        dupCount++;
+      } else {
+        step.isDup = false;
+        step.dupRefs = [];
+      }
+    }
+    tc.dupCount = dupCount;
+  }
+
+  return testCases;
+}
+
+// ── Render ────────────────────────────────────────────────────────
+
+function render() {
+  if (!allData.length) return;
+  document.getElementById('main-content').style.display = 'block';
+
+  const totalSteps   = allData.reduce((s, tc) => s + tc.steps.length, 0);
+  const totalTriples = allData.reduce((s, tc) => s + tc.steps.reduce((ss, st) => ss + st.triples.length, 0), 0);
+  const totalDups    = allData.reduce((s, tc) => s + tc.dupCount, 0);
+  const uniqueSteps  = totalSteps - totalDups;
+
+  document.getElementById('stats-grid').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-value">${allData.length}</div>
+      <div class="stat-label">Test cases</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">${totalSteps}</div>
+      <div class="stat-label">Total steps</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">${totalTriples}</div>
+      <div class="stat-label">Total triples</div>
+    </div>
+    <div class="stat-card highlight">
+      <div class="stat-value">${totalDups}</div>
+      <div class="stat-label">Duplicate steps</div>
+    </div>`;
+
+  applyFilter();
+}
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilter();
+}
+
+function applyFilter() {
+  const q   = document.getElementById('search').value.toLowerCase().trim();
+  const list = document.getElementById('tc-list');
+  list.innerHTML = '';
+
+  let shown = 0;
+
+  for (const tc of allData) {
+    const steps = tc.steps.filter(step => {
+      if (currentFilter === 'dup'    && !step.isDup) return false;
+      if (currentFilter === 'unique' &&  step.isDup) return false;
+      if (q) {
+        const inReq = step.requirement.toLowerCase().includes(q);
+        const inTC  = tc.title.toLowerCase().includes(q);
+        if (!inReq && !inTC) return false;
+      }
+      return true;
+    });
+
+    if (!steps.length) continue;
+
+    const dupInView = steps.filter(s => s.isDup).length;
+    list.appendChild(buildCard(tc, steps, dupInView));
+    shown++;
+  }
+
+  if (!shown) {
+    list.innerHTML = '<div class="empty">No test cases match the current filter or search.</div>';
+  }
+}
+
+function buildCard(tc, steps, dupInView) {
+  const card = document.createElement('div');
+  card.className = 'tc-card' + (tc.dupCount > 0 ? ' has-dups' : '');
+
+  const dupChip = dupInView > 0
+    ? `<span class="chip chip-dup">${dupInView} duplicate${dupInView !== 1 ? 's' : ''}</span>`
+    : `<span class="chip chip-ok">No duplicates</span>`;
+
+  card.innerHTML = `
+    <div class="tc-head" onclick="this.closest('.tc-card').classList.toggle('open')">
+      <span class="tc-arrow">&#9654;</span>
+      <span class="tc-title">${esc(tc.title)}</span>
+      <span class="tc-chips">
+        <span class="chip chip-steps">${steps.length} step${steps.length !== 1 ? 's' : ''}</span>
+        ${dupChip}
+      </span>
+    </div>
+    <div class="tc-body">
+      ${steps.map((s, i) => buildStep(s, i + 1)).join('')}
+    </div>`;
+
+  return card;
+}
+
+function buildStep(step, idx) {
+  const dupBadge = step.isDup
+    ? '<span class="dup-badge">DUPLICATE</span>'
+    : '';
+
+  const tripleRows = step.triples.map(t => {
+    const inner = t.replace(/^\(|\)$/g, '');
+    const parts = inner.split(',').map(p => p.trim());
+    if (parts.length >= 3) {
+      const subj = parts[0];
+      const pred = parts[1];
+      const obj  = parts.slice(2).join(', ');
+      // Skip URL-like objects — don't make them clickable
+      const objIsUrl = /^https?:\/\/|^socks5?:\/\/|^ftp:\/\//.test(obj);
+      const subjSpan = `<span class="t-subject entity-link" data-entity="${esc(subj)}">${esc(subj)}</span>`;
+      const objSpan  = objIsUrl
+        ? `<span class="t-object">${esc(obj)}</span>`
+        : `<span class="t-object entity-link" data-entity="${esc(obj)}">${esc(obj)}</span>`;
+      return `<div class="triple-row"><span class="t-punc">(</span>${subjSpan}<span class="t-punc">, </span><span class="t-pred">${esc(pred)}</span><span class="t-punc">, </span>${objSpan}<span class="t-punc">)</span></div>`;
+    }
+    return `<div class="triple-row">${esc(t)}</div>`;
+  }).join('');
+
+  const annotRows = step.annotations.map(a =>
+    `<div class="annot-row">${esc(a)}</div>`
+  ).join('');
+
+  const dupSection = step.isDup && step.dupRefs.length
+    ? `<div class="dup-section">
+        <div class="dup-section-label">Also found in</div>
+        ${step.dupRefs.map(ref => `
+          <div class="dup-ref-item" onclick="navigateTo('${ref.tcTitle}','${ref.stepId}')" title="Click to jump to step ${ref.stepNum} in this test case" style="cursor:pointer">
+            <div style="flex:1">
+              <div class="dup-ref-tc">${esc(ref.tcTitle)}</div>
+              <div class="dup-ref-req"><span style="font-size:10px;font-weight:600;color:var(--red-text);margin-right:5px">Step ${ref.stepNum}:</span>${esc(ref.requirement)}</div>
+            </div>
+            <div style="font-size:11px;color:var(--accent);flex-shrink:0;padding-left:8px;align-self:center">Go ↗</div>
+          </div>`).join('')}
+      </div>`
+    : '';
+
+  return `
+    <div id="${step.stepId}" class="step${step.isDup ? ' is-dup' : ''}">
+      <div class="step-head" onclick="this.closest('.step').classList.toggle('sopen')">
+        <span class="step-num">${idx}.</span>
+        <span class="step-req">${esc(step.requirement)}</span>
+        ${dupBadge}
+        <span class="step-meta">${step.triples.length}t ▾</span>
+      </div>
+      <div class="step-detail">
+        ${tripleRows}
+        ${annotRows ? '<div style="height:4px"></div>' + annotRows : ''}
+        ${dupSection}
+      </div>
+    </div>`;
+}
+
+function navigateTo(tcTitle, stepId) {
+  // Step 1: if filter is hiding the target, reset to 'all' first
+  const alreadyInDom = !!document.getElementById(stepId);
+
+  if (!alreadyInDom) {
+    currentFilter = 'all';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    const allBtn = document.querySelector('[data-filter="all"]');
+    if (allBtn) allBtn.classList.add('active');
+    document.getElementById('search').value = '';
+    applyFilter();
+  }
+
+  // Step 2: wait for DOM to settle then navigate
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const targetStep = document.getElementById(stepId);
+      if (!targetStep) {
+        console.warn('navigateTo: could not find step', stepId);
+        return;
+      }
+
+      // Open the parent test case card
+      const card = targetStep.closest('.tc-card');
+      if (card && !card.classList.contains('open')) {
+        card.classList.add('open');
+      }
+
+      // Open the step detail panel
+      if (!targetStep.classList.contains('sopen')) {
+        targetStep.classList.add('sopen');
+      }
+
+      // Scroll into view first, then highlight
+      targetStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      setTimeout(() => {
+        targetStep.style.transition = 'box-shadow 0.4s ease, outline 0.4s ease';
+        targetStep.style.boxShadow = '0 0 0 3px #2563eb88';
+        targetStep.style.outline = '2px solid #2563eb';
+        setTimeout(() => {
+          targetStep.style.boxShadow = '';
+          targetStep.style.outline = '';
+        }, 2000);
+      }, 400);
+    });
+  });
+}
+
+function expandAll() {
+  document.querySelectorAll('.tc-card').forEach(c => c.classList.add('open'));
+}
+
+function collapseAll() {
+  document.querySelectorAll('.tc-card').forEach(c => c.classList.remove('open'));
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+</body>
+</html>
