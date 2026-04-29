@@ -1,78 +1,86 @@
 ====================================================
-  Run: 1  |  2026-04-24 12:54 UTC
+  Run: 1  |  2026-04-29 17:55 UTC
 ====================================================
-
--- TC001: Test Opening Test Scenario Settings Modal from Test Studio Page 
-
-Locate the 'Settings' icon on the Test Studio page.
-(User, LOCATES, Settings)
-(Settings, IS_ON, Test Studio)
-[Settings :: Icon]
-[Test Studio :: Page]
-
-Click the 'Settings' icon.
-(User, CLICKS, Settings)
-[Settings :: Icon]
-
 
 -- TC002: Test Environment Selection in Test Scenario Settings Modal 
 
+PAGE: Unknown
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
+PAGE: Test Studio
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
 [Settings :: Icon]
 [Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Verify the 'Environment label' is visible in the modal
 (Environment label, IS_VISIBLE, True)
+(Environment label, IS_IN, Modal)
 
+PAGE: Test Scenario Settings
 Click the 'Dev' button to select the Dev environment
 (User, CLICKS, Dev)
 (Dev, SELECTS, Dev Environment)
 [Dev :: Button]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button to save the environment selection and close the modal
 (User, CLICKS, Save)
 (Save, SAVES, Environment Selection)
 
+PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal again
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
+[Settings :: Icon]
+[Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Click the 'Test' button to select the Test environment
 (User, CLICKS, Test)
 (Test, SELECTS, Test Environment)
 [Test :: Button]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button to save the environment selection and close the modal
 (User, CLICKS, Save)
 (Save, SAVES, Environment Selection)
 
+PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal again
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
+[Settings :: Icon]
+[Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Click the 'QA' button to select the QA environment
 (User, CLICKS, QA)
 (QA, SELECTS, QA Environment)
 [QA :: Button]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button to save the environment selection and close the modal
 (User, CLICKS, Save)
 (Save, SAVES, Environment Selection)
 
+PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal again
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
+[Settings :: Icon]
+[Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Click the 'Prod' button to select the Prod environment
 (User, CLICKS, Prod)
 (Prod, SELECTS, Prod Environment)
 [Prod :: Button]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button to save the environment selection and close the modal
 (User, CLICKS, Save)
 (Save, SAVES, Environment Selection)
@@ -80,600 +88,664 @@ Click the 'Save' button to save the environment selection and close the modal
 
 -- TC003: Test Description Input and Hashtag Addition in Test Scenario Settings Modal 
 
+PAGE: Unknown
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
+PAGE: Test Studio
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
 [Settings :: Icon]
 [Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Locate the 'Description input field' in the Test Scenario Settings modal
 (User, LOCATES, Description)
+(Description, IS_IN, Test Scenario Settings)
+[Description :: Input]
+[Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Click into the 'Description input field'
 (User, CLICKS_INTO, Description)
 [Description :: Input]
 
+PAGE: Test Scenario Settings
 Enter a description text, e.g., 'Verify login workflow #login #smoke'
-(User, ENTERS, Description)
+(User, ENTERS, 'Verify login workflow #login #smoke')
+(User, ENTERS_INTO, Description)
 [Description :: Input]
 
+PAGE: Test Scenario Settings
 Verify that the entered description appears in the input field
-(Entered Description, APPEARS, True)
-(Entered Description, IS_IN, Input)
+(Entered Description, APPEARS_IN, Input)
+[Input :: Input]
 
+PAGE: Test Scenario Settings
 Add one or more hashtags in the description, e.g., '#login #smoke'
-(User, ADDS, Hashtags)
+(User, ADDS, one or more hashtags)
 
+PAGE: Test Scenario Settings
 Verify that hashtags are included in the description input field
 (Description, CONTAINS, hashtags)
 [Description :: Input]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button in the Test Scenario Settings modal
 (User, CLICKS, Save)
 (Save, IS_IN, Test Scenario Settings)
 [Save :: Button]
+[Test Scenario Settings :: Modal]
 
 
 -- TC006: Test Enabling and Disabling Run Once Option in Test Scenario Settings Modal 
 
+PAGE: Unknown
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
+PAGE: Test Studio
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
 [Settings :: Icon]
 [Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Verify the Test Scenario Settings modal is displayed
 (Test Scenario Settings, IS_DISPLAYED, True)
 [Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Locate the 'Run Once' toggle switch in the modal
 (User, LOCATES, Run Once)
 (Run Once, IS_IN, Modal)
 [Run Once :: Toggle]
 [Modal :: Modal]
 
+PAGE: Test Scenario Settings
 Enable the 'Run Once' toggle switch
 (User, ENABLES, Run Once)
 [Run Once :: Toggle]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button in the Test Scenario Settings modal
 (User, CLICKS, Save)
 (Save, IS_IN, Test Scenario Settings)
 [Save :: Button]
 [Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Verify the modal closes and settings are saved
 (Modal, CLOSES, True)
 (Settings, ARE_SAVED, True)
-[Modal :: Modal]
 
+PAGE: Test Scenario Settings
 Reopen the Test Scenario Settings modal by clicking the 'Settings' icon
 (User, CLICKS, Settings)
-(Settings, REOPENS, Test Scenario Settings)
 
+PAGE: Test Scenario Settings
 Verify the 'Run Once' toggle switch is enabled
 (Run Once, IS_ENABLED, True)
 [Run Once :: Toggle]
 
+PAGE: Test Scenario Settings
 Disable the 'Run Once' toggle switch
 (User, DISABLES, Run Once)
 [Run Once :: Toggle]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button in the Test Scenario Settings modal
 (User, CLICKS, Save)
 (Save, IS_IN, Test Scenario Settings)
 [Save :: Button]
+[Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Verify the modal closes and settings are saved
 (Modal, CLOSES, True)
 (Settings, ARE_SAVED, True)
-[Modal :: Modal]
 
+PAGE: Test Scenario Settings
 Reopen the Test Scenario Settings modal by clicking the 'Settings' icon
 (User, CLICKS, Settings)
-(Settings, REOPENS, Test Scenario Settings)
 
+PAGE: Test Scenario Settings
 Verify the 'Run Once' toggle switch is disabled
 (Run Once, IS_DISABLED, True)
 [Run Once :: Toggle]
 
 
--- TC007: Test Enabling and Disabling Run in Stealth Mode Option in Test Scenario Settings Modal 
-
-Navigate to https://automate.nogrunt.com/new/test-studio
-(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
-
-Locate and click on the 'Settings' icon to open the Test Scenario Settings modal
-(User, CLICKS, Settings)
-(Settings, OPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
-
-Locate the 'Run in Stealth Mode' toggle switch in the modal
-(User, LOCATES, Run in Stealth Mode)
-
-Enable the 'Run in Stealth Mode' toggle switch
-(User, ENABLES, Run in Stealth Mode)
-[Run in Stealth Mode :: Toggle]
-
-Click the 'Save' button to save the settings and close the modal
-(User, CLICKS, Save)
-(Save, SAVES, Settings)
-
-Locate and click on the 'Settings' icon again to reopen the Test Scenario Settings modal
-(User, CLICKS, Settings)
-(Settings, REOPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
-
-Verify that the 'Run in Stealth Mode' toggle switch is enabled
-(Run in Stealth Mode, IS_ENABLED, True)
-[Run in Stealth Mode :: Toggle]
-
-Disable the 'Run in Stealth Mode' toggle switch
-(User, DISABLES, Run in Stealth Mode)
-[Run in Stealth Mode :: Toggle]
-
-Click the 'Save' button to save the settings and close the modal
-(User, CLICKS, Save)
-(Save, SAVES, Settings)
-
-Locate and click on the 'Settings' icon again to reopen the Test Scenario Settings modal
-(User, CLICKS, Settings)
-(Settings, REOPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
-
-Verify that the 'Run in Stealth Mode' toggle switch is disabled
-(Run in Stealth Mode, IS_DISABLED, True)
-[Run in Stealth Mode :: Toggle]
-
-
 -- TC008: Test Enabling and Disabling Continue Previous Scenario Option in Test Scenario Settings Modal 
 
+PAGE: Unknown
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
+PAGE: Test Studio
 Ensure the test case TC_04 is selected in the Test Scenario dropdown
 (TC_04, IS_SELECTED, True)
 
+PAGE: Test Studio
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
 [Settings :: Icon]
 [Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Verify the Test Scenario Settings modal is displayed
 (Test Scenario Settings, IS_DISPLAYED, True)
 [Test Scenario Settings :: Modal]
 
+PAGE: Test Scenario Settings
 Locate the 'Continue Previous Scenario' toggle switch in the modal
 (User, LOCATES, Continue Previous Scenario)
+(Continue Previous Scenario, IS_IN, Modal)
+[Continue Previous Scenario :: Toggle]
+[Modal :: Modal]
 
+PAGE: Test Scenario Settings
 Check the current state of the 'Continue Previous Scenario' toggle switch
 (User, CHECKS_STATE_OF, Continue Previous Scenario)
-[Continue Previous Scenario :: Toggle]
 
+PAGE: Test Scenario Settings
 Click the 'Continue Previous Scenario' toggle switch to enable it if it is disabled
 (User, CLICKS, Continue Previous Scenario)
 
+PAGE: Test Scenario Settings
 Verify the 'Continue Previous Scenario' toggle switch is now enabled
 (Continue Previous Scenario, IS_ENABLED, True)
 [Continue Previous Scenario :: Toggle]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button to save the changes and close the modal
 (User, CLICKS, Save)
-(Save, SAVES, Changes)
+(User, SAVES, Changes)
 
+PAGE: Test Scenario Settings
 Reopen the Test Scenario Settings modal by clicking the 'Settings' icon again
-(User, REOPENS, Test Scenario Settings)
 (User, CLICKS, Settings)
-[Test Scenario Settings :: Modal]
-[Settings :: Icon]
+(Settings, REOPENS, Test Scenario Settings)
 
+PAGE: Test Scenario Settings
 Verify the 'Continue Previous Scenario' toggle switch remains enabled
 (Continue Previous Scenario, REMAINS_ENABLED, True)
 [Continue Previous Scenario :: Toggle]
 
+PAGE: Test Scenario Settings
 Click the 'Continue Previous Scenario' toggle switch to disable it
 (User, CLICKS, Continue Previous Scenario)
-(User, DISABLES, Continue Previous Scenario)
-[Continue Previous Scenario :: Toggle]
 
+PAGE: Test Scenario Settings
 Verify the 'Continue Previous Scenario' toggle switch is now disabled
 (Continue Previous Scenario, IS_DISABLED, True)
 [Continue Previous Scenario :: Toggle]
 
+PAGE: Test Scenario Settings
 Click the 'Save' button to save the changes and close the modal
 (User, CLICKS, Save)
-(Save, SAVES, Changes)
+(User, SAVES, Changes)
 
+PAGE: Test Scenario Settings
 Reopen the Test Scenario Settings modal by clicking the 'Settings' icon again
-(User, REOPENS, Test Scenario Settings)
 (User, CLICKS, Settings)
-[Test Scenario Settings :: Modal]
-[Settings :: Icon]
+(Settings, REOPENS, Test Scenario Settings)
 
+PAGE: Test Scenario Settings
 Verify the 'Continue Previous Scenario' toggle switch remains disabled
 (Continue Previous Scenario, REMAINS_DISABLED, True)
-[Continue Previous Scenario :: Toggle]
 
 
--- TC009: Test Enabling and Disabling Audio/Video Option in Test Scenario Settings Modal 
+-- TC015: Test Renaming a Test Case using Actions Menu in Test Studio Page 
 
+PAGE: Unknown
 Navigate to https://automate.nogrunt.com/new/test-studio.
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-Locate and click the 'Settings' icon to open the Test Scenario Settings modal.
-(User, CLICKS, Settings)
-(Settings, OPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
-
-Locate the 'Enable Audio/Video' toggle switch in the modal.
-(User, LOCATES, Enable Audio/Video)
-(Enable Audio/Video, IS_IN, Modal)
-[Enable Audio/Video :: Toggle]
-[Modal :: Modal]
-
-Click the 'Enable Audio/Video' toggle switch to enable the option.
-(User, CLICKS, Enable Audio/Video)
-
-Click the 'Save' button to save the changes and close the modal.
-(User, CLICKS, Save)
-(Save, SAVES, Changes)
-
-Locate and click the 'Settings' icon to reopen the Test Scenario Settings modal.
-(User, CLICKS, Settings)
-(Settings, OPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
-
-Verify that the 'Enable Audio/Video' toggle switch is in the enabled state.
-(Enable Audio/Video, IS_ENABLED, True)
-[Enable Audio/Video :: Toggle]
-
-Click the 'Enable Audio/Video' toggle switch to disable the option.
-(User, CLICKS, Enable Audio/Video)
-
-Click the 'Save' button to save the changes and close the modal.
-(User, CLICKS, Save)
-(Save, SAVES, Changes)
-
-Locate and click the 'Settings' icon to reopen the Test Scenario Settings modal.
-(User, CLICKS, Settings)
-(Settings, OPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
-
-Verify that the 'Enable Audio/Video' toggle switch is in the disabled state.
-(Enable Audio/Video, IS_DISABLED, True)
-
-
--- TC010: Test Enabling and Disabling Keep Browser Open on Test Step Failure Option in Test Scenario Settings Modal 
-
-Navigate to https://automate.nogrunt.com/new/test-studio.
-(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
-
-Locate and click the 'Settings' icon to open the Test Scenario Settings modal.
-(User, CLICKS, Settings)
-(Settings, OPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
-
-In the Test Scenario Settings modal, locate the 'Keep Browser Open on Test Step Failure' toggle switch.
-(User, LOCATES, Keep Browser Open on Test Step Failure)
-(Keep Browser Open on Test Step Failure, IS_IN, Test Scenario Settings)
-[Keep Browser Open on Test Step Failure :: Toggle]
-[Test Scenario Settings :: Modal]
-
-Enable the 'Keep Browser Open on Test Step Failure' toggle switch.
-(User, ENABLES, Keep Browser Open on Test Step Failure)
-[Keep Browser Open on Test Step Failure :: Toggle]
-
-Click the 'Save' button to save the Test Scenario Settings and close the modal.
-(User, CLICKS, Save)
-
-Locate and click the 'Settings' icon again to reopen the Test Scenario Settings modal.
-(User, CLICKS, Settings)
-
-Verify that the 'Keep Browser Open on Test Step Failure' toggle switch is enabled.
-(Keep Browser Open on Test Step Failure, IS_ENABLED, True)
-
-Disable the 'Keep Browser Open on Test Step Failure' toggle switch.
-(User, DISABLES, Keep Browser Open on Test Step Failure)
-[Keep Browser Open on Test Step Failure :: Toggle]
-
-Click the 'Save' button to save the Test Scenario Settings and close the modal.
-(User, CLICKS, Save)
-
-Locate and click the 'Settings' icon again to reopen the Test Scenario Settings modal.
-(User, CLICKS, Settings)
-
-Verify that the 'Keep Browser Open on Test Step Failure' toggle switch is disabled.
-(Keep Browser Open on Test Step Failure, IS_DISABLED, True)
-[Keep Browser Open on Test Step Failure :: Toggle]
-
-
--- TC012: Test Entering Proxy URL in Test Scenario Settings Modal 
-
-Navigate to https://automate.nogrunt.com/new/test-studio.
-(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
-
-Verify that the Test Studio page is loaded.
-(Test Studio, IS_LOADED, True)
+PAGE: Test Studio.
+Locate the test case named 'TC_04' in the Test Studio page.
+(User, LOCATES, TC_04)
+(TC_04, IS_IN, Test Studio)
 [Test Studio :: Page]
 
-Locate and click the 'Settings' icon to open the Test Scenario Settings modal.
-(User, CLICKS, Settings)
-(Settings, OPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
+PAGE: Test Studio.
+Click on the 'Actions menu (three dots)' icon corresponding to the test case.
+(User, CLICKS, Actions menu (three dots))
+[Actions menu (three dots) :: Icon]
 
-Verify that the Test Scenario Settings modal is displayed.
-(Test Scenario Settings, IS_DISPLAYED, True)
-[Test Scenario Settings :: Modal]
+PAGE: Test Studio.
+Click on the 'Rename' option in the Actions menu. In the 'Rename Testcase' modal, click into the 'Testcase name input field'.
+(User, CLICKS, Rename)
+(Rename, IS_IN, Actions)
 
-Locate the 'Proxy URL input field' in the modal.
-(User, LOCATES, Proxy URL)
-(Proxy URL, IS_IN, Modal)
-[Proxy URL :: Input]
-[Modal :: Modal]
+PAGE: Test Studio.
+Enter the new test case name (e.g., 'TC_04_Renamed') into the input field.
+(User, ENTERS, New Test Case Name)
+(User, ENTERS_INTO, Input)
+[Input :: Input]
 
-Clear any existing value in the 'Proxy URL input field'.
-(User, CLEARS, Proxy URL)
-[Proxy URL :: Input]
-
-Enter 'http://proxy.example.com:8080' into the 'Proxy URL input field'.
-(User, ENTERS, http://proxy.example.com:8080)
-
-Click the 'Save' button in the Test Scenario Settings modal.
-(User, CLICKS, Save)
-(Save, IS_IN, Test Scenario Settings)
-[Save :: Button]
-[Test Scenario Settings :: Modal]
-
-Verify that the modal closes and the settings are saved.
-(Modal, CLOSES, True)
-(Settings, ARE_SAVED, True)
-
-Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.
-(User, CLICKS, Settings)
-
-[ERROR] Verify that the 'Proxy URL input field' contains 'http://proxy.example.com:8080'.: 500: No triples found: (Proxy URL, CONTAINS, http://proxy.example.com:8080
-
-Clear the 'Proxy URL input field'.
-(User, CLEARS, Proxy URL)
-[Proxy URL :: Input]
-
-Enter 'https://secureproxy.example.com:443' into the 'Proxy URL input field'.
-(User, ENTERS, https://secureproxy.example.com:443)
-(User, ENTERS_INTO, Proxy URL)
-[Proxy URL :: Input]
-
-Click the 'Save' button in the Test Scenario Settings modal.
-(User, CLICKS, Save)
-(Save, IS_IN, Test Scenario Settings)
-[Save :: Button]
-[Test Scenario Settings :: Modal]
-
-Verify that the modal closes and the settings are saved.
-(Modal, CLOSES, True)
-
-Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.
-(User, REOPENS, Test Scenario Settings)
-(User, CLICKS, Settings)
-[Test Scenario Settings :: Modal]
-[Settings :: Icon]
-
-Verify that the 'Proxy URL input field' contains 'https://secureproxy.example.com:443'.
-(Proxy URL, CONTAINS, https://secureproxy.example.com:443)
-[Proxy URL :: Input]
-
-Clear the 'Proxy URL input field'.
-(User, CLEARS, Proxy URL)
-[Proxy URL :: Input]
-
-Enter 'socks5://proxyhost:1080' into the 'Proxy URL input field'.
-(User, ENTERS, socks5://proxyhost:1080)
-
-Click the 'Save' button in the Test Scenario Settings modal.
-(User, CLICKS, Save)
-(Save, IS_IN, Test Scenario Settings)
-[Save :: Button]
-[Test Scenario Settings :: Modal]
-
-Verify that the modal closes and the settings are saved.
-(Modal, CLOSES, True)
-(Settings, ARE_SAVED, True)
-
-Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.
-(User, CLICKS, Settings)
-
-Verify that the 'Proxy URL input field' contains 'socks5://proxyhost:1080'.
-(Proxy URL, CONTAINS, socks5://proxyhost:1080)
-
-Clear the 'Proxy URL input field'.
-(User, CLEARS, Proxy URL)
-[Proxy URL :: Input]
-
-Enter 'http://localhost:3128' into the 'Proxy URL input field'.
-(User, ENTERS, http://localhost:3128)
-(User, ENTERS_INTO, Proxy URL)
-[Proxy URL :: Input]
-
-Click the 'Save' button in the Test Scenario Settings modal.
-(User, CLICKS, Save)
-(Save, IS_IN, Test Scenario Settings)
-[Save :: Button]
-[Test Scenario Settings :: Modal]
-
-Verify that the modal closes and the settings are saved.
-(Modal, CLOSES, True)
-(Settings, ARE_SAVED, True)
-
-Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.
-(User, CLICKS, Settings)
-
-Verify that the 'Proxy URL input field' contains 'http://localhost:3128'.
-(Proxy URL, CONTAINS, http://localhost:3128)
-[Proxy URL :: Input]
-
-Clear the 'Proxy URL input field'.
-(User, CLEARS, Proxy URL)
-[Proxy URL :: Input]
-
-Enter 'invalid-url' into the 'Proxy URL input field'.
-(User, ENTERS, invalid-url)
-(User, ENTERS_INTO, Proxy URL)
-[Proxy URL :: Input]
-
-Click the 'Save' button in the Test Scenario Settings modal.
-(User, CLICKS, Save)
-(Save, IS_IN, Test Scenario Settings)
-[Save :: Button]
-[Test Scenario Settings :: Modal]
-
-Verify that the modal closes and the settings are saved.
-(Modal, CLOSES, True)
-
-Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.
-(User, REOPENS, Test Scenario Settings)
-(User, CLICKS, Settings)
-[Test Scenario Settings :: Modal]
-[Settings :: Icon]
-
-Verify that the 'Proxy URL input field' contains 'invalid-url'.
-(Proxy URL, CONTAINS, invalid-url)
-[Proxy URL :: Input]
+PAGE: Test Studio.
+Click the 'SAVE' button in the Rename Testcase modal.
+(User, CLICKS, SAVE)
 
 
--- TC013: Test Saving Changes in Test Scenario Settings Modal 
+-- TC016: Test Copying a Test Case using Actions Menu in Test Studio Page 
 
+PAGE: Unknown
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-Locate and click the 'Settings' icon to open the Test Scenario Settings modal
-(User, CLICKS, Settings)
-(Settings, OPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
+PAGE: Test Studio
+Locate the test case to be copied (e.g., TC_
+(User, LOCATES, test case)
 
-Click the 'Dev' button to select the Dev environment
-(User, CLICKS, Dev)
-(Dev, SELECTS, Dev Environment)
-[Dev :: Button]
+[ERROR] in the test case list: 500: Unexpected response: {
+  "candidates": [
+    {
+      "content": {
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 1584,
+    "totalTokenCount": 1941,
+    "cachedContentTokenCount": 1009,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1584
+      }
+    ],
+    "cacheTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1009
+      }
+    ],
+    "thoughtsTokenCount": 357
+  },
+  "modelVersion": "gemini-2.5-flash",
+  "responseId": "JETyaarHE5aN4-EPuKuJuAM"
+}
 
-Click the 'Test' button to select the Test environment
-(User, CLICKS, Test)
-(Test, SELECTS, Test Environment)
-[Test :: Button]
 
-Click the 'QA' button to select the QA environment
-(User, CLICKS, QA)
-(QA, SELECTS, QA Environment)
-[QA :: Button]
+PAGE: Test Studio
+Click on the 'Actions menu (three dots)' icon corresponding to the test case
+(User, CLICKS, Actions menu (three dots))
 
-Click the 'Prod' button to select the Prod environment
-(User, CLICKS, Prod)
-(Prod, SELECTS, Prod Environment)
-[Prod :: Button]
+PAGE: Test Studio
+Click on the 'Copy' option in the Actions menu
+(User, CLICKS, Copy)
+(Copy, IS_IN, Actions)
 
-Click into the 'Description input field' and enter a description with hashtags (e.g., '#smoke #login')
-(User, CLICKS_INTO, Description)
 
-Click the 'Firefox' button to select Firefox browser
-(User, CLICKS, Firefox)
-(Firefox, SELECTS, Firefox Browser)
+-- TC018: Test Setting Flow Status for Multiple Selected Steps using Actions Menu in Test Studio Page 
 
-Click the 'Chrome' button to select Chrome browser
-(User, CLICKS, Chrome)
-(Chrome, SELECTS, Chrome Browser)
-[Chrome :: Button]
+PAGE: Unknown
+Navigate to https://automate.nogrunt.com/new/test-studio
+(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-Click the 'Safari' button to select Safari browser
-(User, CLICKS, Safari)
-(Safari, SELECTS, Safari Browser)
-[Safari :: Button]
+PAGE: Test Studio
+Locate the test case in the Test Studio grid that contains multiple steps (ensure steps 1, 2, and 23 are visible)
+(User, LOCATES, Test Case)
 
-Click the 'Edge' button to select Edge browser
-(User, CLICKS, Edge)
-(Edge, SELECTS, Edge Browser)
-[Edge :: Button]
+PAGE: Test Studio
+Click the checkbox for step 1 to select it
+(User, CLICKS, step 1)
+(step 1, SELECTS, True)
 
-Click the 'All browsers' button to select all browsers
-(User, CLICKS, All browsers)
-(All browsers, SELECTS, All browsers)
-[All browsers :: Button]
+PAGE: Test Studio
+Click the checkbox for step 2 to select it
+(User, CLICKS, checkbox for step 2)
 
-Click the '1920x1080' button to select 1920x1080 screen resolution
-(User, CLICKS, 1920x1080)
+PAGE: Test Studio
+Click the checkbox for step 23 to select it
+(User, CLICKS, Step 23)
+(User, SELECTS, Step 23)
+[Step 23 :: Checkbox]
 
-Click the '1440x768' button to select 1440x768 screen resolution
-(User, CLICKS, 1440x768)
-(1440x768, SELECTS, 1440x768 Screen Resolution)
-[1440x768 :: Button]
+PAGE: Test Studio
+Locate and click the 'Actions menu (three dots)' icon to open the context menu
+(User, CLICKS, Actions menu (three dots))
 
-Click the '1366x768' button to select 1366x768 screen resolution
-(User, CLICKS, 1366x768)
-(1366x768, SELECTS, 1366x768 screen resolution)
-[1366x768 :: Button]
+PAGE: Test Studio
+Click the 'Set Flow Status' option in the context menu
+(User, CLICKS, Set Flow Status)
 
-Click the '1280x768' button to select 1280x768 screen resolution
-(User, CLICKS, 1280x768)
-(1280x768, SELECTS, 1280x768 screen resolution)
-[1280x768 :: Button]
 
-Toggle the 'Run Once' switch to enable it
-(User, TOGGLES, Run Once)
+-- TC026: Test Adding Test Case to Test Suite using Actions Menu in Test Studio Page 
 
-Toggle the 'Run Once' switch to disable it
-(User, TOGGLES, Run Once)
+PAGE: Unknown
+Navigate to https://automate.nogrunt.com/new/test-studio page.
+(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-Toggle the 'Run in Stealth Mode' switch to enable it
-(User, TOGGLES, Run in Stealth Mode)
+PAGE: Test Studio
+Locate the 'Actions menu (three dots)' icon for the desired test case.
+(User, LOCATES, Actions menu (three dots))
+[Actions menu (three dots) :: Icon]
 
-Toggle the 'Run in Stealth Mode' switch to disable it
-(User, DISABLES, Run in Stealth Mode)
-[Run in Stealth Mode :: Switch]
+PAGE: Test Studio
+Click on the 'Actions menu (three dots)' icon to open the context menu. In the context menu, locate the 'Add to test suite' option.
+(User, CLICKS, Actions menu (three dots))
 
-Toggle the 'Continue Previous Scenario' switch to enable it
-(User, TOGGLES, Continue Previous Scenario)
+PAGE: Test Studio
+Click on the 'Add to test suite' option to open the Add to Test Suite modal. In the Add to Test Suite modal, locate the 'Products dropdown'.
+(User, CLICKS, Add to test suite)
 
-Toggle the 'Continue Previous Scenario' switch to disable it
-(User, TOGGLES, Continue Previous Scenario)
+PAGE: Add to Test Suite
+Click on the 'Products dropdown' to expand the list of available products.
+(User, CLICKS, Products)
 
-Toggle the 'Enable Audio/Video' switch to enable it
-(User, TOGGLES, Enable Audio/Video)
+PAGE: Add to Test Suite
+Select 'Banking' from the products dropdown.
+(User, SELECTS, Banking)
+(Banking, IS_FROM, Product)
+[Product :: Dropdown]
 
-Toggle the 'Enable Audio/Video' switch to disable it
-(User, DISABLES, Enable Audio/Video)
-[Enable Audio/Video :: Switch]
+PAGE: Add to Test Suite
+Locate the 'Suite dropdown' in the modal.
+(User, LOCATES, Suite)
+(Suite, IS_IN, Modal)
+[Suite :: Dropdown]
+[Modal :: Modal]
 
-Toggle the 'Keep Browser Open on Test Step Failure' switch to enable it
-(User, ENABLES, Keep Browser Open on Test Step Failure)
+PAGE: Add to Test Suite
+Click on the 'Suite dropdown' to expand the list of available suites.
+(User, CLICKS, Suite)
+(Suite, EXPANDS, List of Available Suites)
 
-Toggle the 'Keep Browser Open on Test Step Failure' switch to disable it
-(User, TOGGLES, Keep Browser Open on Test Step Failure)
+PAGE: Add to Test Suite
+Select 'nogrunt' from the suite dropdown.
+(User, SELECTS, nogrunt)
+(nogrunt, IS_FROM, suite)
+[suite :: Dropdown]
 
-Click into the 'Threshold input field' and enter a value greater than 0 (e.g., '10')
-(User, CLICKS_INTO, Threshold)
+PAGE: Add to Test Suite
+Locate the 'SAVE' button in the modal.
+(User, LOCATES, SAVE)
+(SAVE, IS_IN, Modal)
+[SAVE :: Button]
+[Modal :: Modal]
 
-Click into the 'Threshold input field' and clear the value or enter '0'
-(User, CLICKS_INTO, Threshold)
-(User, CLEARS, Value)
+PAGE: Add to Test Suite
+Click on the 'SAVE' button to save the test suite selection and close the modal.
+(User, CLICKS, SAVE)
+(SAVE, SAVES, Test Suite Selection)
 
-Click into the 'Proxy URL input field' and enter a valid proxy URL (e.g., 'http://proxy.example.com:8080')
-(User, CLICKS_INTO, Proxy URL)
 
-Click the 'Save' button to save all changes and close the modal
-(User, CLICKS, Save)
-(Save, SAVES, All Changes)
+-- TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page 
+
+PAGE: Unknown
+Navigate to https://automate.nogrunt.com/new/test-studio
+(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
+
+PAGE: Test Studio
+Locate the test case to manage baseline images for
+(User, LOCATES, Test Case)
+
+PAGE: Test Studio
+Click on the 'Actions menu (three dots)' icon for the selected test case In the Actions Menu modal, click on the 'Baseline images' option
+(User, CLICKS, Actions menu (three dots))
+
+
+-- TC028: Test Viewing Test Case Information using Actions Menu in Test Studio Page 
+
+PAGE: Unknown
+Navigate to https://automate.nogrunt.com/new/test-studio
+(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
+
+PAGE: Test Studio
+Locate the test case named 'TC_04 selected' in the Test Scenario dropdown
+(User, LOCATES, TC_04 selected)
+(TC_04 selected, IS_IN, Test Scenario)
+[Test Scenario :: Dropdown]
+
+PAGE: Test Studio
+Click on the 'Actions menu (three dots)' icon for the selected test case
+(User, CLICKS, Actions menu (three dots))
+[Actions menu (three dots) :: Icon]
+
+PAGE: Test Studio
+Click on the 'Info' option in the Actions Menu In the 'Test Case Info' modal, verify the presence of the 'Created date' text In the 'Test Case Info' modal, verify the presence of the actual creation date and time (e.g., '2025-05-30 13:56:46.0') In the 'Test Case Info' modal, verify the presence of the 'Created by' text In the 'Test Case Info' modal, verify the presence of the 'Baseline Date' text In the 'Test Case Info' modal, verify the presence of the baseline date value (e.g., '0')
+(User, CLICKS, Info)
+(Info, IS_IN, Actions Menu)
+
+PAGE: Test Studio
+Click the 'Close' button in the 'Test Case Info' modal
+(User, CLICKS, Close)
+(Close, IS_IN, Test Case Info)
+[Close :: Button]
+[Test Case Info :: Modal]
+
+
+-- TC029: Test Replacing Selected Test Steps with Steps from Another Test Case using Actions Menu in Test Studio Page 
+
+PAGE: Unknown
+Navigate to https://automate.nogrunt.com/new/test-studio
+(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
+
+PAGE: Test Studio
+Locate the test case to be edited in the Test Studio page
+(User, LOCATES, Test Case)
+(Test Case, IS_IN, Test Studio)
+
+PAGE: Test Studio
+Select the checkbox for step 2
+(User, SELECTS, step 2)
+[step 2 :: Checkbox]
+
+PAGE: Test Studio
+Select the checkbox for step 23
+(User, SELECTS, step 23)
+[step 23 :: Checkbox]
+
+PAGE: Test Studio
+Select the checkbox for step 30
+(User, SELECTS, step 30)
+[step 30 :: Checkbox]
+
+PAGE: Test Studio
+Click on the 'More Options' icon to open the context menu
+(User, CLICKS, More Options)
+(More Options, OPENS, Context Menu)
+[More Options :: Icon]
+[Context Menu :: Menu]
+
+PAGE: Test Studio
+Click on the 'Replace Test Steps' option in the context menu In the 'Are you sure you want to Replace selected test steps?' modal, enter '1' in the 'Enter Test Case Id input field'
+(User, CLICKS, Replace Test Steps)
+
+PAGE: Test Studio
+Click on the 'REPLACE' button in the modal
+(User, CLICKS, REPLACE)
+(REPLACE, IS_IN, Modal)
+[REPLACE :: Button]
+[Modal :: Modal]
+
+
+-- TC030: Test Inlining Test Steps from Another Test Case using Actions Menu in Test Studio Page 
+
+PAGE: Unknown
+Click on the checkbox for step 2 to select step 2 in the current test case.
+(User, CLICKS, step 2)
+
+PAGE: Unknown
+Click on the "More Options" icon to open the context menu.
+(User, CLICKS, More Options)
+(More Options, OPENS, Context Menu)
+[More Options :: Icon]
+[Context Menu :: Menu]
+
+PAGE: Unknown
+Click on the 'Inline Test Steps' option in the Actions menu to open the Create Inline Dependence modal.
+(User, CLICKS, Inline Test Steps)
+
+PAGE: Create Inline Dependence
+Enter the test case ID to embed in the 'Enter Test Case Id' input field in the modal.
+(User, ENTERS, test case ID to embed)
+(User, ENTERS_INTO, Enter Test Case Id)
+(Enter Test Case Id, IS_IN, Modal)
+[Enter Test Case Id :: Input]
+[Modal :: Modal]
+
+PAGE: Create Inline Dependence
+Click on the 'REPLACE INLINE TEST CASE' button to confirm and perform the inline operation.
+(User, CLICKS, REPLACE INLINE TEST CASE)
+[REPLACE INLINE TEST CASE :: Button]
+
+
+-- TC034: Test Navigation to Execution Reports Page from Test Studio Page 
+
+PAGE: Unknown
+Locate the 'Execution Reports' button on the Test Studio page.
+(User, LOCATES, Execution Reports)
+(Execution Reports, IS_ON, Test Studio)
+[Execution Reports :: Button]
+[Test Studio :: Page]
+
+PAGE: Test Studio
+Click the 'Execution Reports' button.
+(User, CLICKS, Execution Reports)
+[Execution Reports :: Button]
+
+
+-- TC035: Test Opening and Closing Review Execution Flow Modal from Test Studio Page 
+
+PAGE: Unknown
+Locate the 'Review Flow' button on the https://automate.nogrunt.com/new/test-studio page.
+(User, LOCATES, Review Flow)
+(Review Flow, IS_ON, https://automate.nogrunt.com/new/test-studio)
+[Review Flow :: Button]
+
+PAGE: Unknown
+Click the 'Review Flow' button.
+(User, CLICKS, Review Flow)
+[Review Flow :: Button]
+
+PAGE: Unknown
+Verify that the 'Review Execution Flow' modal appears on the screen.
+(Review Execution Flow, APPEARS, True)
+(Review Execution Flow, IS_ON, Screen)
+[Review Execution Flow :: Modal]
+
+PAGE: Unknown
+Locate the 'Close' icon within the 'Review Execution Flow' modal.
+(User, LOCATES, Close)
+(Close, IS_IN, Review Execution Flow)
+[Close :: Icon]
+[Review Execution Flow :: Modal]
+
+PAGE: Unknown
+Click the 'Close' icon.
+(User, CLICKS, Close)
+[Close :: Icon]
+
+
+-- TC036: Test Enabling and Disabling Debug Mode in Debug Configuration Modal 
+
+PAGE: Unknown
+Navigate to https://automate.nogrunt.com/new/test-studio.
+(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
+
+PAGE: Test Studio.
+Locate and click the 'Execute in Debug Mode' button to open the Debug Configuration modal.
+(User, CLICKS, Execute in Debug Mode)
+(Execute in Debug Mode, OPENS, Debug Configuration)
+[Execute in Debug Mode :: Button]
+[Debug Configuration :: Modal]
+
+PAGE: Debug Configuration
+Verify the Debug Configuration modal is displayed.
+(Debug Configuration, IS_DISPLAYED, True)
+[Debug Configuration :: Modal]
+
+PAGE: Debug Configuration
+Locate the 'Enable Debug Mode' toggle switch in the modal.
+(User, LOCATES, Enable Debug Mode)
+(Enable Debug Mode, IS_IN, Modal)
+[Enable Debug Mode :: Toggle]
+[Modal :: Modal]
+
+PAGE: Debug Configuration
+Click the 'Enable Debug Mode' toggle switch to enable debug mode.
+(User, CLICKS, Enable Debug Mode)
+(Enable Debug Mode, ENABLES, Debug Mode)
+[Enable Debug Mode :: Toggle]
+
+PAGE: Debug Configuration
+Verify that the toggle switch is now in the enabled (on) state.
+(Toggle Switch, IS_ENABLED, True)
+[Toggle Switch :: Toggle]
+
+PAGE: Debug Configuration
+Click the 'Enable Debug Mode' toggle switch again to disable debug mode.
+(User, CLICKS, Enable Debug Mode)
+
+PAGE: Debug Configuration
+Verify that the toggle switch is now in the disabled (off) state.
+(Toggle Switch, IS_DISABLED, True)
+[Toggle Switch :: Toggle]
+
+
+-- TC037: Test Go to Step Debug Mode Type in Debug Configuration Modal 
+
+PAGE: Unknown
+Click on the 'Execute in Debug Mode' button on the https://automate.nogrunt.com/new/test-studio page. In the Debug Configuration modal, toggle the 'Enable Debug Mode' switch to ON.
+(User, CLICKS, Execute in Debug Mode)
+
+PAGE: Unknown
+Click the 'Go to Step' radio button to select the Go to Step debug mode type.
+(User, CLICKS, Go to Step)
+
+PAGE: Unknown
+Click on the 'Select step to go to dropdown' to open the list of available steps.
+(User, CLICKS, Select step to go to)
+(Select step to go to, OPENS, list of available steps)
+[Select step to go to :: Dropdown]
+
+PAGE: Unknown
+Select 'Step 23: EditBox Clear & Enter' from the dropdown as the target step.
+(User, SELECTS, Step 23: EditBox Clear & Enter)
+
+PAGE: Unknown
+Click the 'Run' button in the Debug Configuration modal.
+(User, CLICKS, Run)
+(Run, IS_IN, Debug Configuration)
+[Run :: Button]
+[Debug Configuration :: Modal]
+
+
+-- TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal 
+
+PAGE: Unknown
+Navigate to https://automate.nogrunt.com/new/test-studio
+(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
+
+PAGE: Test Studio
+Locate and click the 'Execute in Debug Mode' button to open the Debug Configuration modal
+(User, CLICKS, Execute in Debug Mode)
+
+PAGE: Debug Configuration
+Locate and toggle the 'Enable Debug Mode' switch to ON
+(User, TOGGLES_TO_ON, Enable Debug Mode)
+
+PAGE: Debug Configuration
+Locate and click the 'Resume After Step' radio button to select the Resume After Step debug mode type
+(User, CLICKS, Resume After Step)
+(User, SELECTS, Resume After Step debug mode type)
+[Resume After Step :: Button]
+
+PAGE: Debug Configuration
+Locate and click the 'Select step to go to dropdown' In the dropdown, select 'Step 23: EditBox Clear & Enter' as the target step
+(User, CLICKS, Select step to go to)
+
+PAGE: Debug Configuration
+Locate and click the 'Run' button to start debug execution in Resume After Step mode
+(User, CLICKS, Run)
 
 

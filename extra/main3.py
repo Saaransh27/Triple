@@ -300,104 +300,6 @@ def entities_from_result(triples: list, annotations: list) -> list:
                 found.add(obj)
     return sorted(found)
 
-# ───────────────── DUPLICATE ANALYSIS ─────────────────
-
-
-def normalize_triple(triple: str):
-    return re.sub(r"\s+", " ", triple.strip().lower())
-
-
-def triple_signature(triples: list[str]):
-    """
-    canonical signature for a step based on extracted triples
-    """
-    normalized = sorted(normalize_triple(t) for t in triples)
-    raw = "||".join(normalized)
-    return hashlib.md5(raw.encode()).hexdigest()
-
-
-def run_duplicate_analysis(test_cases):
-    """
-    test_cases format:
-    [
-      {
-        "title": "...",
-        "steps":[
-            {
-              "step_no":1,
-              "requirement":"...",
-              "triples":[...]
-            }
-        ]
-      }
-    ]
-    """
-
-    signature_index = {}
-
-    # build duplicate groups
-    for tc in test_cases:
-        for step in tc["steps"]:
-
-            sig = triple_signature(step["triples"])
-
-            if sig not in signature_index:
-                signature_index[sig] = []
-
-            signature_index[sig].append({
-                "test_case": tc["title"],
-                "step_no": step["step_no"],
-                "requirement": step["requirement"]
-            })
-
-
-    duplicate_groups = []
-
-    for sig, refs in signature_index.items():
-        if len(refs) > 1:
-            duplicate_groups.append({
-                "signature": sig,
-                "matches": refs
-            })
-
-
-    # annotate each step
-    dup_count = 0
-
-    for tc in test_cases:
-        for step in tc["steps"]:
-
-            sig = triple_signature(step["triples"])
-            refs = signature_index[sig]
-
-            is_dup = len(refs) > 1
-
-            if is_dup:
-                dup_count += 1
-
-            step["is_duplicate"] = is_dup
-            step["duplicate_refs"] = [
-                r for r in refs
-                if not (
-                    r["test_case"] == tc["title"]
-                    and r["step_no"] == step["step_no"]
-                )
-            ]
-
-
-    return {
-        "test_cases": test_cases,
-        "duplicate_groups": duplicate_groups,
-        "stats": {
-            "total_steps": sum(
-                len(tc["steps"]) for tc in test_cases
-            ),
-            "duplicate_steps": dup_count,
-            "unique_steps":
-                sum(len(tc["steps"]) for tc in test_cases)-dup_count
-        }
-    }
-
 
 # ── Page context inference ───────────────────────────────────────────────────────
 
@@ -461,7 +363,8 @@ def _extract_page_from_text(text: str):
 
 def infer_page_context(results: list) -> list:
     """
-    Page change becomes effective from the NEXT step, not the current one.
+    Walk steps in sequence. For each step read the requirement text directly
+    to detect page changes — does not rely on triples.
     """
     current_page = "Unknown"
 
@@ -470,15 +373,11 @@ def infer_page_context(results: list) -> list:
             item["current_page"] = current_page
             continue
 
-        # 1. Assign current page FIRST
-        item["current_page"] = current_page
-
-        # 2. Then detect page change
         detected = _extract_page_from_text(item.get("requirement", ""))
-
-        # 3. Update for NEXT step
         if detected:
             current_page = detected
+
+        item["current_page"] = current_page
 
     return results
 

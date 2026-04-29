@@ -1,0 +1,16 @@
+{
+  "TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page | Actions menu (three dots)": {
+    "name": "Actions menu (three dots)",
+    "type": "",
+    "test_case": "TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page",
+    "location": "Test Studio page",
+    "desc": "An icon for the selected test case that, when clicked, opens the Actions Menu modal."
+  },
+  "TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page | Test Case": {
+    "name": "Test Case",
+    "type": "",
+    "test_case": "TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page",
+    "location": "Test Studio page",
+    "desc": "A test case for which baseline images can be managed."
+  }
+}
