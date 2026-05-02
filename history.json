@@ -15560,5 +15560,4825 @@
         ]
       }
     ]
+  },
+  {
+    "run_number": 12,
+    "test_case_number": "1",
+    "timestamp": "2026-04-30T05:55:23.904557Z",
+    "mode": "excel",
+    "source": "NoG_testcases.xlsx",
+    "test_cases_count": 10,
+    "requirements_count": 152,
+    "triples_count": 229,
+    "annotations_count": 109,
+    "test_cases": [
+      {
+        "test_case": "TC001: Test Opening Test Scenario Settings Modal from Test Studio Page",
+        "results": [
+          {
+            "requirement": "Locate the 'Settings' icon on the Test Studio page.",
+            "triples": [
+              "(User, LOCATES, Settings)",
+              "(Settings, IS_ON, Test Studio)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Studio :: Page]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Settings' icon.",
+            "triples": [
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC002: Test Environment Selection in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Verify the 'Environment label' is visible in the modal",
+            "triples": [
+              "(Environment label, IS_VISIBLE, True)",
+              "(Environment label, IS_IN, Modal)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Dev' button to select the Dev environment",
+            "triples": [
+              "(User, CLICKS, Dev)",
+              "(Dev, SELECTS, Dev Environment)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Test' button to select the Test environment",
+            "triples": [
+              "(User, CLICKS, Test)",
+              "(Test, SELECTS, Test Environment)"
+            ],
+            "annotations": [
+              "[Test :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'QA' button to select the QA environment",
+            "triples": [
+              "(User, CLICKS, QA)",
+              "(QA, SELECTS, QA Environment)"
+            ],
+            "annotations": [
+              "[QA :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Prod' button to select the Prod environment",
+            "triples": [
+              "(User, CLICKS, Prod)",
+              "(Prod, SELECTS, Prod Environment)"
+            ],
+            "annotations": [
+              "[Prod :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC003: Test Description Input and Hashtag Addition in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the 'Description input field' in the Test Scenario Settings modal",
+            "triples": [
+              "(User, LOCATES, Description)",
+              "(Description, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Description :: Input]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click into the 'Description input field'",
+            "triples": [
+              "(User, CLICKS_INTO, Description)"
+            ],
+            "annotations": [
+              "[Description :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enter a description text, e.g., 'Verify login workflow #login #smoke'",
+            "triples": [
+              "(User, ENTERS, 'Verify login workflow #login #smoke')",
+              "(User, ENTERS_INTO, Description)"
+            ],
+            "annotations": [
+              "[Description :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the entered description appears in the input field",
+            "triples": [
+              "(Entered description, APPEARS_IN, Input field)"
+            ],
+            "annotations": [
+              "[Input field :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Add one or more hashtags in the description, e.g., '#login #smoke'",
+            "triples": [
+              "(User, ADDS, one or more hashtags)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that hashtags are included in the description input field",
+            "triples": [
+              "(Description, CONTAINS, hashtags)"
+            ],
+            "annotations": [
+              "[Description :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC006: Test Enabling and Disabling Run Once Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Verify the Test Scenario Settings modal is displayed",
+            "triples": [
+              "(Test Scenario Settings, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate the 'Run Once' toggle switch in the modal",
+            "triples": [
+              "(User, LOCATES, Run Once)",
+              "(Run Once, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enable the 'Run Once' toggle switch",
+            "triples": [
+              "(User, ENABLES, Run Once)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the modal closes and settings are saved",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon",
+            "triples": [
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Run Once' toggle switch is enabled",
+            "triples": [
+              "(Run Once, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Disable the 'Run Once' toggle switch",
+            "triples": [
+              "(User, DISABLES, Run Once)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the modal closes and settings are saved",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon",
+            "triples": [
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Run Once' toggle switch is disabled",
+            "triples": [
+              "(Run Once, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC007: Test Enabling and Disabling Run in Stealth Mode Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click on the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the 'Run in Stealth Mode' toggle switch in the modal",
+            "triples": [
+              "(User, LOCATES, Run in Stealth Mode)",
+              "(Run in Stealth Mode, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Run in Stealth Mode :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enable the 'Run in Stealth Mode' toggle switch",
+            "triples": [
+              "(User, ENABLES, Run in Stealth Mode)"
+            ],
+            "annotations": [
+              "[Run in Stealth Mode :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the settings and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click on the 'Settings' icon again to reopen the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Run in Stealth Mode' toggle switch is enabled",
+            "triples": [
+              "(Run in Stealth Mode, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Run in Stealth Mode :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Disable the 'Run in Stealth Mode' toggle switch",
+            "triples": [
+              "(User, DISABLES, Run in Stealth Mode)"
+            ],
+            "annotations": [
+              "[Run in Stealth Mode :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the settings and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click on the 'Settings' icon again to reopen the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Run in Stealth Mode' toggle switch is disabled",
+            "triples": [
+              "(Run in Stealth Mode, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Run in Stealth Mode :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC008: Test Enabling and Disabling Continue Previous Scenario Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Ensure the test case TC_04 is selected in the Test Scenario dropdown",
+            "triples": [
+              "(TC_04, IS_SELECTED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Verify the Test Scenario Settings modal is displayed",
+            "triples": [
+              "(Test Scenario Settings, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate the 'Continue Previous Scenario' toggle switch in the modal",
+            "triples": [
+              "(User, LOCATES, Continue Previous Scenario)",
+              "(Continue Previous Scenario, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Check the current state of the 'Continue Previous Scenario' toggle switch",
+            "triples": [
+              "(User, CHECKS_STATE, Continue Previous Scenario)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Continue Previous Scenario' toggle switch to enable it if it is disabled",
+            "triples": [
+              "(User, CLICKS, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch is now enabled",
+            "triples": [
+              "(Continue Previous Scenario, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the changes and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch remains enabled",
+            "triples": [
+              "(Continue Previous Scenario, REMAINS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Continue Previous Scenario' toggle switch to disable it",
+            "triples": [
+              "(User, CLICKS, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch is now disabled",
+            "triples": [
+              "(Continue Previous Scenario, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the changes and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch remains disabled",
+            "triples": [
+              "(Continue Previous Scenario, REMAINS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC009: Test Enabling and Disabling Audio/Video Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Locate the 'Enable Audio/Video' toggle switch in the modal.",
+            "triples": [
+              "(User, LOCATES, Enable Audio/Video)",
+              "(Enable Audio/Video, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Enable Audio/Video :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Enable Audio/Video' toggle switch to enable the option.",
+            "triples": [
+              "(User, CLICKS, Enable Audio/Video)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the changes and close the modal.",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to reopen the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Enable Audio/Video' toggle switch is in the enabled state.",
+            "triples": [
+              "(Enable Audio/Video, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Enable Audio/Video :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Enable Audio/Video' toggle switch to disable the option.",
+            "triples": [
+              "(User, CLICKS, Enable Audio/Video)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the changes and close the modal.",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to reopen the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Enable Audio/Video' toggle switch is in the disabled state.",
+            "triples": [
+              "(Enable Audio/Video, IS_DISABLED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC010: Test Enabling and Disabling Keep Browser Open on Test Step Failure Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal. In the Test Scenario Settings modal, locate the 'Keep Browser Open on Test Step Failure' toggle switch.",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Enable the 'Keep Browser Open on Test Step Failure' toggle switch.",
+            "triples": [
+              "(User, ENABLES, Keep Browser Open on Test Step Failure)"
+            ],
+            "annotations": [
+              "[Keep Browser Open on Test Step Failure :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the Test Scenario Settings and close the modal.",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon again to reopen the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Keep Browser Open on Test Step Failure' toggle switch is enabled.",
+            "triples": [
+              "(Keep Browser Open on Test Step Failure, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Keep Browser Open on Test Step Failure :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Disable the 'Keep Browser Open on Test Step Failure' toggle switch.",
+            "triples": [
+              "(User, DISABLES, Keep Browser Open on Test Step Failure)"
+            ],
+            "annotations": [
+              "[Keep Browser Open on Test Step Failure :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the Test Scenario Settings and close the modal.",
+            "triples": [
+              "(User, CLICKS, Save)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon again to reopen the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Keep Browser Open on Test Step Failure' toggle switch is disabled.",
+            "triples": [
+              "(Keep Browser Open on Test Step Failure, IS_DISABLED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC012: Test Entering Proxy URL in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Verify that the Test Studio page is loaded.",
+            "triples": [
+              "(Test Studio, IS_LOADED, True)"
+            ],
+            "annotations": [
+              "[Test Studio :: Page]"
+            ],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Verify that the Test Scenario Settings modal is displayed.",
+            "triples": [
+              "(Test Scenario Settings, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate the 'Proxy URL input field' in the modal.",
+            "triples": [
+              "(User, LOCATES, Proxy URL)",
+              "(Proxy URL, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Clear any existing value in the 'Proxy URL input field'.",
+            "triples": [
+              "(User, CLEARS, Existing Value)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enter 'http://proxy.example.com:8080' into the 'Proxy URL input field'.",
+            "triples": [
+              "(User, ENTERS, http://proxy.example.com:8080)",
+              "(User, ENTERS_INTO, Proxy URL)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the modal closes and the settings are saved.",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.",
+            "triples": [
+              "(User, REOPENS, Test Scenario Settings)",
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Proxy URL input field' contains 'http://proxy.example.com:8080'.",
+            "triples": [
+              "(Proxy URL, CONTAINS, http://proxy.example.com:8080)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Clear the 'Proxy URL input field'.",
+            "triples": [
+              "(User, CLEARS, Proxy URL)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enter 'https://secureproxy.example.com:443' into the 'Proxy URL input field'.",
+            "triples": [
+              "(User, ENTERS, https://secureproxy.example.com:443)",
+              "(User, ENTERS_INTO, Proxy URL)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the modal closes and the settings are saved.",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Proxy URL input field' contains 'https://secureproxy.example.com:443'.",
+            "triples": [
+              "(Proxy URL, CONTAINS, https://secureproxy.example.com:443)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Clear the 'Proxy URL input field'.",
+            "triples": [
+              "(User, CLEARS, Proxy URL)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enter 'socks5://proxyhost:1080' into the 'Proxy URL input field'.",
+            "triples": [
+              "(User, ENTERS, socks5://proxyhost:1080)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the modal closes and the settings are saved.",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Proxy URL input field' contains 'socks5://proxyhost:1080'.",
+            "triples": [
+              "(Proxy URL, CONTAINS, socks5://proxyhost:1080)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Clear the 'Proxy URL input field'.",
+            "triples": [
+              "(User, CLEARS, Proxy URL)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enter 'http://localhost:3128' into the 'Proxy URL input field'.",
+            "triples": [
+              "(User, ENTERS, http://localhost:3128)",
+              "(User, ENTERS_INTO, Proxy URL)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the modal closes and the settings are saved.",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Proxy URL input field' contains 'http://localhost:3128'.",
+            "triples": [
+              "(Proxy URL, CONTAINS, http://localhost:3128)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Clear the 'Proxy URL input field'.",
+            "triples": [
+              "(User, CLEARS, Proxy URL)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enter 'invalid-url' into the 'Proxy URL input field'.",
+            "triples": [
+              "(User, ENTERS, invalid-url)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal.",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the modal closes and the settings are saved.",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon.",
+            "triples": [
+              "(User, REOPENS, Test Scenario Settings)",
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the 'Proxy URL input field' contains 'invalid-url'.",
+            "triples": [
+              "(Proxy URL, CONTAINS, invalid-url)"
+            ],
+            "annotations": [
+              "[Proxy URL :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC013: Test Saving Changes in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the 'Dev' button to select the Dev environment",
+            "triples": [
+              "(User, CLICKS, Dev)",
+              "(Dev, SELECTS, Dev Environment)"
+            ],
+            "annotations": [
+              "[Dev :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Test' button to select the Test environment",
+            "triples": [
+              "(User, CLICKS, Test)",
+              "(Test, SELECTS, Test Environment)"
+            ],
+            "annotations": [
+              "[Test :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'QA' button to select the QA environment",
+            "triples": [
+              "(User, CLICKS, QA)",
+              "(QA, SELECTS, QA Environment)"
+            ],
+            "annotations": [
+              "[QA :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Prod' button to select the Prod environment",
+            "triples": [
+              "(User, CLICKS, Prod)",
+              "(Prod, SELECTS, Prod Environment)"
+            ],
+            "annotations": [
+              "[Prod :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click into the 'Description input field' and enter a description with hashtags (e.g., '#smoke #login')",
+            "triples": [
+              "(User, CLICKS_INTO, Description)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Firefox' button to select Firefox browser",
+            "triples": [
+              "(User, CLICKS, Firefox)",
+              "(Firefox, SELECTS, Firefox Browser)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Chrome' button to select Chrome browser",
+            "triples": [
+              "(User, CLICKS, Chrome)",
+              "(User, SELECTS, Chrome browser)"
+            ],
+            "annotations": [
+              "[Chrome :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Safari' button to select Safari browser",
+            "triples": [
+              "(User, CLICKS, Safari)",
+              "(Safari, SELECTS, Safari Browser)"
+            ],
+            "annotations": [
+              "[Safari :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Edge' button to select Edge browser",
+            "triples": [
+              "(User, CLICKS, Edge)",
+              "(Edge, SELECTS, Edge Browser)"
+            ],
+            "annotations": [
+              "[Edge :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'All browsers' button to select all browsers",
+            "triples": [
+              "(User, CLICKS, All browsers)",
+              "(All browsers, SELECTS, all browsers)"
+            ],
+            "annotations": [
+              "[All browsers :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the '1920x1080' button to select 1920x1080 screen resolution",
+            "triples": [
+              "(User, CLICKS, 1920x1080)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the '1440x768' button to select 1440x768 screen resolution",
+            "triples": [
+              "(User, CLICKS, 1440x768)",
+              "(1440x768, SELECTS, 1440x768 screen resolution)"
+            ],
+            "annotations": [
+              "[1440x768 :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the '1366x768' button to select 1366x768 screen resolution",
+            "triples": [
+              "(User, CLICKS, 1366x768)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the '1280x768' button to select 1280x768 screen resolution",
+            "triples": [
+              "(User, CLICKS, 1280x768)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Run Once' switch to enable it",
+            "triples": [
+              "(User, ENABLES, Run Once)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Run Once' switch to disable it",
+            "triples": [
+              "(User, TOGGLES, Run Once)",
+              "(User, DISABLES, Run Once)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Run in Stealth Mode' switch to enable it",
+            "triples": [
+              "(User, ENABLES, Run in Stealth Mode)"
+            ],
+            "annotations": [
+              "[Run in Stealth Mode :: Switch]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Run in Stealth Mode' switch to disable it",
+            "triples": [
+              "(User, TOGGLES, Run in Stealth Mode)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Continue Previous Scenario' switch to enable it",
+            "triples": [
+              "(User, TOGGLES, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Continue Previous Scenario' switch to disable it",
+            "triples": [
+              "(User, DISABLES, Continue Previous Scenario)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Switch]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Enable Audio/Video' switch to enable it",
+            "triples": [
+              "(User, TOGGLES, Enable Audio/Video)"
+            ],
+            "annotations": [
+              "[Enable Audio/Video :: Switch]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Enable Audio/Video' switch to disable it",
+            "triples": [
+              "(User, DISABLES, Enable Audio/Video)"
+            ],
+            "annotations": [
+              "[Enable Audio/Video :: Switch]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Keep Browser Open on Test Step Failure' switch to enable it",
+            "triples": [
+              "(User, TOGGLES, Keep Browser Open on Test Step Failure)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Toggle the 'Keep Browser Open on Test Step Failure' switch to disable it",
+            "triples": [
+              "(User, DISABLES, Keep Browser Open on Test Step Failure)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click into the 'Threshold input field' and enter a value greater than 0 (e.g., '10')",
+            "triples": [
+              "(User, CLICKS_INTO, Threshold)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click into the 'Threshold input field' and clear the value or enter '0'",
+            "triples": [
+              "(User, CLICKS_INTO, Threshold)",
+              "(User, CLEARS, Value)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click into the 'Proxy URL input field' and enter a valid proxy URL (e.g., 'http://proxy.example.com:8080')",
+            "triples": [
+              "(User, CLICKS_INTO, Proxy URL)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save all changes and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, all changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "run_number": 13,
+    "test_case_number": "1",
+    "timestamp": "2026-04-30T09:49:33.432529Z",
+    "mode": "excel",
+    "source": "testcases.xlsx",
+    "test_cases_count": 17,
+    "requirements_count": 138,
+    "triples_count": 203,
+    "annotations_count": 90,
+    "test_cases": [
+      {
+        "test_case": "TC002: Test Environment Selection in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Environment label' is visible in the modal",
+            "triples": [
+              "(Environment label, IS_VISIBLE, True)",
+              "(Environment label, IS_IN, Modal)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Dev' button to select the Dev environment",
+            "triples": [
+              "(User, CLICKS, Dev)",
+              "(Dev, SELECTS, Dev Environment)"
+            ],
+            "annotations": [
+              "[Dev :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Test' button to select the Test environment",
+            "triples": [
+              "(User, CLICKS, Test)",
+              "(Test, SELECTS, Test Environment)"
+            ],
+            "annotations": [
+              "[Test :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'QA' button to select the QA environment",
+            "triples": [
+              "(User, CLICKS, QA)",
+              "(QA, SELECTS, QA Environment)"
+            ],
+            "annotations": [
+              "[QA :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Prod' button to select the Prod environment",
+            "triples": [
+              "(User, CLICKS, Prod)",
+              "(Prod, SELECTS, Prod Environment)"
+            ],
+            "annotations": [
+              "[Prod :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC003: Test Description Input and Hashtag Addition in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate the 'Description input field' in the Test Scenario Settings modal",
+            "triples": [
+              "(User, LOCATES, Description)",
+              "(Description, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Description :: Input]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click into the 'Description input field'",
+            "triples": [
+              "(User, CLICKS_INTO, Description)"
+            ],
+            "annotations": [
+              "[Description :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enter a description text, e.g., 'Verify login workflow #login #smoke'",
+            "triples": [
+              "(User, ENTERS, 'Verify login workflow #login #smoke')",
+              "(User, ENTERS_INTO, Description)"
+            ],
+            "annotations": [
+              "[Description :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the entered description appears in the input field",
+            "triples": [
+              "(Entered description, APPEARS_IN, Input field)"
+            ],
+            "annotations": [
+              "[Input field :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Add one or more hashtags in the description, e.g., '#login #smoke'",
+            "triples": [
+              "(User, ADDS, one or more hashtags)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that hashtags are included in the description input field",
+            "triples": [
+              "(Hashtags, ARE_INCLUDED_IN, Description)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC006: Test Enabling and Disabling Run Once Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the Test Scenario Settings modal is displayed",
+            "triples": [
+              "(Test Scenario Settings, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate the 'Run Once' toggle switch in the modal",
+            "triples": [
+              "(User, LOCATES, Run Once)",
+              "(Run Once, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enable the 'Run Once' toggle switch",
+            "triples": [
+              "(User, ENABLES, Run Once)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the modal closes and settings are saved",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Run Once' toggle switch is enabled",
+            "triples": [
+              "(Run Once, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Disable the 'Run Once' toggle switch",
+            "triples": [
+              "(User, DISABLES, Run Once)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the modal closes and settings are saved",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Run Once' toggle switch is disabled",
+            "triples": [
+              "(Run Once, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC008: Test Enabling and Disabling Continue Previous Scenario Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Ensure the test case TC_04 is selected in the Test Scenario dropdown",
+            "triples": [
+              "(TC_04, IS_SELECTED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the Test Scenario Settings modal is displayed",
+            "triples": [
+              "(Test Scenario Settings, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate the 'Continue Previous Scenario' toggle switch in the modal",
+            "triples": [
+              "(User, LOCATES, Continue Previous Scenario)",
+              "(Continue Previous Scenario, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Check the current state of the 'Continue Previous Scenario' toggle switch",
+            "triples": [
+              "(User, CHECKS_STATE_OF, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Continue Previous Scenario' toggle switch to enable it if it is disabled",
+            "triples": [
+              "(User, CLICKS, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch is now enabled",
+            "triples": [
+              "(Continue Previous Scenario, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the changes and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch remains enabled",
+            "triples": [
+              "(Continue Previous Scenario, REMAINS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Continue Previous Scenario' toggle switch to disable it",
+            "triples": [
+              "(User, CLICKS, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch is now disabled",
+            "triples": [
+              "(Continue Previous Scenario, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the changes and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch remains disabled",
+            "triples": [
+              "(Continue Previous Scenario, REMAINS_DISABLED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC015: Test Renaming a Test Case using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Locate the test case named 'TC_04' in the Test Studio page.",
+            "triples": [
+              "(User, LOCATES, TC_04)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon corresponding to the test case.",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Click on the 'Rename' option in the Actions menu.",
+            "triples": [
+              "(User, CLICKS, Rename)",
+              "(Rename, IS_IN, Actions)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "In the 'Rename Testcase' modal, click into the 'Testcase name input field'.",
+            "triples": [
+              "(User, CLICKS_INTO, Testcase name)",
+              "(Testcase name, IS_IN, Rename Testcase)"
+            ],
+            "annotations": [
+              "[Testcase name :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Enter the new test case name (e.g., 'TC_04_Renamed') into the input field.",
+            "triples": [
+              "(User, ENTERS, new test case name)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Click the 'SAVE' button in the Rename Testcase modal.",
+            "triples": [
+              "(User, CLICKS, SAVE)",
+              "(SAVE, IS_IN, Rename Testcase)"
+            ],
+            "annotations": [
+              "[SAVE :: Button]",
+              "[Rename Testcase :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Rename Testcase"
+          }
+        ]
+      },
+      {
+        "test_case": "TC016: Test Copying a Test Case using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the test case to be copied (e.g., TC_",
+            "triples": [
+              "(User, LOCATES, test case)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "in the test case list",
+            "triples": [],
+            "annotations": [],
+            "error": "500: Unexpected response: {\n  \"candidates\": [\n    {\n      \"content\": {\n        \"role\": \"model\"\n      },\n      \"finishReason\": \"STOP\",\n      \"index\": 0\n    }\n  ],\n  \"usageMetadata\": {\n    \"promptTokenCount\": 1584,\n    \"totalTokenCount\": 2071,\n    \"promptTokensDetails\": [\n      {\n        \"modality\": \"TEXT\",\n        \"tokenCount\": 1584\n      }\n    ],\n    \"thoughtsTokenCount\": 487\n  },\n  \"modelVersion\": \"gemini-2.5-flash\",\n  \"responseId\": \"wiLzad-CI-XljuMP9Ke2oAU\"\n}\n",
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon corresponding to the test case",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Copy' option in the Actions menu",
+            "triples": [
+              "(User, CLICKS, Copy)",
+              "(Copy, IS_IN, Actions)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC018: Test Setting Flow Status for Multiple Selected Steps using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the test case in the Test Studio grid that contains multiple steps (ensure steps 1, 2, and 23 are visible)",
+            "triples": [
+              "(User, LOCATES, Test Case)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the checkbox for step 1 to select it",
+            "triples": [
+              "(User, CLICKS, step 1)",
+              "(User, SELECTS, step 1)"
+            ],
+            "annotations": [
+              "[step 1 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the checkbox for step 2 to select it",
+            "triples": [
+              "(User, CLICKS, step 2)",
+              "(User, SELECTS, step 2)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the checkbox for step 23 to select it",
+            "triples": [
+              "(User, CLICKS, step 23)",
+              "(User, SELECTS, step 23)"
+            ],
+            "annotations": [
+              "[step 23 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Actions menu (three dots)' icon to open the context menu",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))",
+              "(Actions menu (three dots), OPENS, context)"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]",
+              "[context :: Menu]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the 'Set Flow Status' option in the context menu",
+            "triples": [
+              "(User, CLICKS, Set Flow Status)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC026: Test Adding Test Case to Test Suite using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio page.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the 'Actions menu (three dots)' icon for the desired test case.",
+            "triples": [
+              "(User, LOCATES, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon to open the context menu. In the context menu, locate the 'Add to test suite' option.",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Add to test suite' option to open the Add to Test Suite modal.",
+            "triples": [
+              "(User, CLICKS, Add to test suite)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "In the Add to Test Suite modal, locate the 'Products dropdown'.",
+            "triples": [
+              "(User, LOCATES, Products)",
+              "(Products, IS_IN, Add to Test Suite)"
+            ],
+            "annotations": [
+              "[Products :: Dropdown]",
+              "[Add to Test Suite :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Click on the 'Products dropdown' to expand the list of available products.",
+            "triples": [
+              "(User, CLICKS, Products)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Select 'Banking' from the products dropdown.",
+            "triples": [
+              "(User, SELECTS, Banking)",
+              "(Banking, IS_FROM, Product)"
+            ],
+            "annotations": [
+              "[Product :: Dropdown]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Locate the 'Suite dropdown' in the modal.",
+            "triples": [
+              "(User, LOCATES, Suite)",
+              "(Suite, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Suite :: Dropdown]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Click on the 'Suite dropdown' to expand the list of available suites.",
+            "triples": [
+              "(User, CLICKS, Suite)",
+              "(Suite, EXPANDS, List of Available Suites)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Select 'nogrunt' from the suite dropdown.",
+            "triples": [
+              "(User, SELECTS, nogrunt)",
+              "(nogrunt, IS_FROM, suite)"
+            ],
+            "annotations": [
+              "[suite :: Dropdown]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Locate the 'SAVE' button in the modal.",
+            "triples": [
+              "(User, LOCATES, SAVE)",
+              "(SAVE, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[SAVE :: Button]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Click on the 'SAVE' button to save the test suite selection and close the modal.",
+            "triples": [
+              "(User, CLICKS, SAVE)",
+              "(SAVE, SAVES, Test Suite Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          }
+        ]
+      },
+      {
+        "test_case": "TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the test case to manage baseline images for",
+            "triples": [
+              "(User, LOCATES, Test Case)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon for the selected test case",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the Actions Menu modal, click on the 'Baseline images' option",
+            "triples": [
+              "(User, CLICKS, Baseline images)",
+              "(Baseline images, IS_IN, Actions Menu)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC028: Test Viewing Test Case Information using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the test case named 'TC_04 selected' in the Test Scenario dropdown",
+            "triples": [
+              "(User, LOCATES, TC_04 selected)",
+              "(TC_04 selected, IS_IN, Test Scenario)"
+            ],
+            "annotations": [
+              "[Test Scenario :: Dropdown]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon for the selected test case",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Info' option in the Actions Menu",
+            "triples": [
+              "(User, CLICKS, Info)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the 'Created date' text",
+            "triples": [
+              "(User, VERIFIES_PRESENCE_OF, Created date)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the actual creation date and time (e.g., '2025-05-30 13:56:46.0')",
+            "triples": [
+              "(User, VERIFIES_PRESENCE, actual creation date and time)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the 'Created by' text",
+            "triples": [
+              "(Created by, IS_PRESENT, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the 'Baseline Date' text",
+            "triples": [
+              "(User, VERIFIES_PRESENCE_OF, Baseline Date)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the baseline date value (e.g., '0')",
+            "triples": [
+              "(User, VERIFIES_PRESENCE_OF, baseline date value)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the 'Close' button in the 'Test Case Info' modal",
+            "triples": [],
+            "annotations": [],
+            "error": "",
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC029: Test Replacing Selected Test Steps with Steps from Another Test Case using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the test case to be edited in the Test Studio page",
+            "triples": [
+              "(User, LOCATES, Test Case)",
+              "(Test Case, IS_IN, Test Studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Select the checkbox for step 2",
+            "triples": [
+              "(User, SELECTS, step 2)"
+            ],
+            "annotations": [
+              "[step 2 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Select the checkbox for step 23",
+            "triples": [
+              "(User, SELECTS, step 23)"
+            ],
+            "annotations": [
+              "[step 23 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Select the checkbox for step 30",
+            "triples": [
+              "(User, SELECTS, step 30)"
+            ],
+            "annotations": [
+              "[step 30 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'More Options' icon to open the context menu",
+            "triples": [
+              "(User, CLICKS, More Options)",
+              "(More Options, OPENS, Context Menu)"
+            ],
+            "annotations": [
+              "[More Options :: Icon]",
+              "[Context Menu :: Menu]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Replace Test Steps' option in the context menu",
+            "triples": [
+              "(User, CLICKS, Replace Test Steps)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Are you sure you want to Replace selected test steps?' modal, enter '1' in the 'Enter Test Case Id input field'",
+            "triples": [
+              "(User, ENTERS, 1)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'REPLACE' button in the modal",
+            "triples": [
+              "(User, CLICKS, REPLACE)",
+              "(REPLACE, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[REPLACE :: Button]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC030: Test Inlining Test Steps from Another Test Case using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Click on the checkbox for step 2 to select step 2 in the current test case.",
+            "triples": [
+              "(User, CLICKS, step 2)",
+              "(User, SELECTS, step 2)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click on the \"More Options\" icon to open the context menu.",
+            "triples": [
+              "(User, CLICKS, More Options)",
+              "(More Options, OPENS, context)"
+            ],
+            "annotations": [
+              "[More Options :: Icon]",
+              "[context :: Menu]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click on the 'Inline Test Steps' option in the Actions menu to open the Create Inline Dependence modal.",
+            "triples": [
+              "(User, CLICKS, Inline Test Steps)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Create Inline Dependence"
+          },
+          {
+            "requirement": "Enter the test case ID to embed in the 'Enter Test Case Id' input field in the modal.",
+            "triples": [
+              "(User, ENTERS, test case ID to embed)",
+              "(User, ENTERS_INTO, Enter Test Case Id)",
+              "(Enter Test Case Id, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Enter Test Case Id :: Input]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Create Inline Dependence"
+          },
+          {
+            "requirement": "Click on the 'REPLACE INLINE TEST CASE' button to confirm and perform the inline operation.",
+            "triples": [
+              "(User, CLICKS, REPLACE INLINE TEST CASE)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Create Inline Dependence"
+          }
+        ]
+      },
+      {
+        "test_case": "TC034: Test Navigation to Execution Reports Page from Test Studio Page",
+        "results": [
+          {
+            "requirement": "Locate the 'Execution Reports' button on the Test Studio page.",
+            "triples": [
+              "(User, LOCATES, Execution Reports)",
+              "(Execution Reports, IS_ON, Test Studio)"
+            ],
+            "annotations": [
+              "[Execution Reports :: Button]",
+              "[Test Studio :: Page]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the 'Execution Reports' button.",
+            "triples": [
+              "(User, CLICKS, Execution Reports)"
+            ],
+            "annotations": [
+              "[Execution Reports :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC035: Test Opening and Closing Review Execution Flow Modal from Test Studio Page",
+        "results": [
+          {
+            "requirement": "Locate the 'Review Flow' button on the https://automate.nogrunt.com/new/test-studio page.",
+            "triples": [
+              "(User, LOCATES, Review Flow)",
+              "(Review Flow, IS_ON, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [
+              "[Review Flow :: Button]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Review Flow' button.",
+            "triples": [
+              "(User, CLICKS, Review Flow)"
+            ],
+            "annotations": [
+              "[Review Flow :: Button]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Verify that the 'Review Execution Flow' modal appears on the screen.",
+            "triples": [
+              "(Review Execution Flow, APPEARS, True)",
+              "(Review Execution Flow, IS_ON, Screen)"
+            ],
+            "annotations": [
+              "[Review Execution Flow :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the 'Close' icon within the 'Review Execution Flow' modal.",
+            "triples": [
+              "(User, LOCATES, Close)",
+              "(Close, IS_IN, Review Execution Flow)"
+            ],
+            "annotations": [
+              "[Close :: Icon]",
+              "[Review Execution Flow :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Close' icon.",
+            "triples": [
+              "(User, CLICKS, Close)"
+            ],
+            "annotations": [
+              "[Close :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          }
+        ]
+      },
+      {
+        "test_case": "TC036: Test Enabling and Disabling Debug Mode in Debug Configuration Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Locate and click the 'Execute in Debug Mode' button to open the Debug Configuration modal.",
+            "triples": [
+              "(User, CLICKS, Execute in Debug Mode)",
+              "(Execute in Debug Mode, OPENS, Debug Configuration)"
+            ],
+            "annotations": [
+              "[Execute in Debug Mode :: Button]",
+              "[Debug Configuration :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Verify the Debug Configuration modal is displayed.",
+            "triples": [
+              "(Debug Configuration, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Debug Configuration :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate the 'Enable Debug Mode' toggle switch in the modal.",
+            "triples": [
+              "(User, LOCATES, Enable Debug Mode)",
+              "(Enable Debug Mode, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Enable Debug Mode :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Click the 'Enable Debug Mode' toggle switch to enable debug mode.",
+            "triples": [
+              "(User, CLICKS, Enable Debug Mode)",
+              "(User, ENABLES, Debug Mode)"
+            ],
+            "annotations": [
+              "[Enable Debug Mode :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Verify that the toggle switch is now in the enabled (on) state.",
+            "triples": [
+              "(Toggle Switch, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Toggle Switch :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Click the 'Enable Debug Mode' toggle switch again to disable debug mode.",
+            "triples": [
+              "(User, CLICKS, Enable Debug Mode)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Verify that the toggle switch is now in the disabled (off) state.",
+            "triples": [
+              "(Toggle Switch, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Toggle Switch :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          }
+        ]
+      },
+      {
+        "test_case": "TC037: Test Go to Step Debug Mode Type in Debug Configuration Modal",
+        "results": [
+          {
+            "requirement": "Click on the 'Execute in Debug Mode' button on the https://automate.nogrunt.com/new/test-studio page.",
+            "triples": [
+              "(User, CLICKS, Execute in Debug Mode)",
+              "(Execute in Debug Mode, IS_ON, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [
+              "[Execute in Debug Mode :: Button]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "In the Debug Configuration modal, toggle the 'Enable Debug Mode' switch to ON.",
+            "triples": [
+              "(User, SETS_TO, ON)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Go to Step' radio button to select the Go to Step debug mode type.",
+            "triples": [
+              "(User, CLICKS, Go to Step)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click on the 'Select step to go to dropdown' to open the list of available steps.",
+            "triples": [
+              "(User, CLICKS, Select step to go to)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Select 'Step 23: EditBox Clear & Enter' from the dropdown as the target step.",
+            "triples": [
+              "(User, SELECTS, Step 23: EditBox Clear & Enter)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Run' button in the Debug Configuration modal.",
+            "triples": [
+              "(User, CLICKS, Run)",
+              "(Run, IS_IN, Debug Configuration)"
+            ],
+            "annotations": [
+              "[Run :: Button]",
+              "[Debug Configuration :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          }
+        ]
+      },
+      {
+        "test_case": "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Execute in Debug Mode' button to open the Debug Configuration modal",
+            "triples": [
+              "(User, CLICKS, Execute in Debug Mode)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate and toggle the 'Enable Debug Mode' switch to ON",
+            "triples": [
+              "(User, TOGGLES_TO_ON, Enable Debug Mode)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate and click the 'Resume After Step' radio button to select the Resume After Step debug mode type",
+            "triples": [
+              "(User, CLICKS, Resume After Step)",
+              "(User, SELECTS, Resume After Step debug mode type)"
+            ],
+            "annotations": [
+              "[Resume After Step :: Button]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate and click the 'Select step to go to dropdown' In the dropdown, select 'Step 23: EditBox Clear & Enter' as the target step",
+            "triples": [
+              "(User, CLICKS, Select step to go to)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate and click the 'Run' button to start debug execution in Resume After Step mode",
+            "triples": [
+              "(User, CLICKS, Run)",
+              "(Run, STARTS, Debug Execution)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "run_number": 14,
+    "test_case_number": "1",
+    "timestamp": "2026-05-01T18:58:20.187991Z",
+    "mode": "excel",
+    "source": "testcases.xlsx",
+    "test_cases_count": 17,
+    "requirements_count": 138,
+    "triples_count": 195,
+    "annotations_count": 88,
+    "test_cases": [
+      {
+        "test_case": "TC002: Test Environment Selection in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Verify the 'Environment label' is visible in the modal",
+            "triples": [
+              "(Environment label, IS_VISIBLE, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Dev' button to select the Dev environment",
+            "triples": [
+              "(User, CLICKS, Dev)",
+              "(Dev, SELECTS, Dev Environment)"
+            ],
+            "annotations": [
+              "[Dev :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Test' button to select the Test environment",
+            "triples": [
+              "(User, CLICKS, Test)",
+              "(Test, SELECTS, Test Environment)"
+            ],
+            "annotations": [
+              "[Test :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'QA' button to select the QA environment",
+            "triples": [
+              "(User, CLICKS, QA)",
+              "(QA, SELECTS, QA Environment)"
+            ],
+            "annotations": [
+              "[QA :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Prod' button to select the Prod environment",
+            "triples": [
+              "(User, CLICKS, Prod)",
+              "(Prod, SELECTS, Prod Environment)"
+            ],
+            "annotations": [
+              "[Prod :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the environment selection and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, SAVES, Environment Selection)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC003: Test Description Input and Hashtag Addition in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate the 'Description input field' in the Test Scenario Settings modal",
+            "triples": [
+              "(User, LOCATES, Description)",
+              "(Description, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Description :: Input]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click into the 'Description input field'",
+            "triples": [
+              "(User, CLICKS_INTO, Description)"
+            ],
+            "annotations": [
+              "[Description :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enter a description text, e.g., 'Verify login workflow #login #smoke'",
+            "triples": [
+              "(User, ENTERS, 'Verify login workflow #login #smoke')",
+              "(User, ENTERS_INTO, Description)"
+            ],
+            "annotations": [
+              "[Description :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that the entered description appears in the input field",
+            "triples": [
+              "(Entered description, APPEARS_IN, Input field)"
+            ],
+            "annotations": [
+              "[Input field :: Input]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Add one or more hashtags in the description, e.g., '#login #smoke'",
+            "triples": [
+              "(User, ADDS, one or more hashtags)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify that hashtags are included in the description input field",
+            "triples": [
+              "(Hashtags, ARE_INCLUDED_IN, Description)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC006: Test Enabling and Disabling Run Once Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Verify the Test Scenario Settings modal is displayed",
+            "triples": [
+              "(Test Scenario Settings, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate the 'Run Once' toggle switch in the modal",
+            "triples": [
+              "(User, LOCATES, Run Once)",
+              "(Run Once, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Enable the 'Run Once' toggle switch",
+            "triples": [
+              "(User, ENABLES, Run Once)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the modal closes and settings are saved",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon",
+            "triples": [
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Run Once' toggle switch is enabled",
+            "triples": [
+              "(Run Once, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Disable the 'Run Once' toggle switch",
+            "triples": [
+              "(User, DISABLES, Run Once)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button in the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(Save, IS_IN, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Save :: Button]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the modal closes and settings are saved",
+            "triples": [
+              "(Modal, CLOSES, True)",
+              "(Settings, ARE_SAVED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon",
+            "triples": [
+              "(User, CLICKS, Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Run Once' toggle switch is disabled",
+            "triples": [
+              "(Run Once, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Run Once :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC008: Test Enabling and Disabling Continue Previous Scenario Option in Test Scenario Settings Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Ensure the test case TC_04 is selected in the Test Scenario dropdown",
+            "triples": [
+              "(TC_04, IS_SELECTED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Settings' icon to open the Test Scenario Settings modal",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, OPENS, Test Scenario Settings)"
+            ],
+            "annotations": [
+              "[Settings :: Icon]",
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Verify the Test Scenario Settings modal is displayed",
+            "triples": [
+              "(Test Scenario Settings, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Test Scenario Settings :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Locate the 'Continue Previous Scenario' toggle switch in the modal",
+            "triples": [
+              "(User, LOCATES, Continue Previous Scenario)",
+              "(Continue Previous Scenario, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Check the current state of the 'Continue Previous Scenario' toggle switch",
+            "triples": [
+              "(User, CHECKS_STATE_OF, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Continue Previous Scenario' toggle switch to enable it if it is disabled",
+            "triples": [
+              "(User, CLICKS, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch is now enabled",
+            "triples": [
+              "(Continue Previous Scenario, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the changes and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch remains enabled",
+            "triples": [
+              "(Continue Previous Scenario, REMAINS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Continue Previous Scenario' toggle switch to disable it",
+            "triples": [
+              "(User, CLICKS, Continue Previous Scenario)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch is now disabled",
+            "triples": [
+              "(Continue Previous Scenario, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Continue Previous Scenario :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Click the 'Save' button to save the changes and close the modal",
+            "triples": [
+              "(User, CLICKS, Save)",
+              "(User, SAVES, Changes)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Reopen the Test Scenario Settings modal by clicking the 'Settings' icon again",
+            "triples": [
+              "(User, CLICKS, Settings)",
+              "(Settings, REOPENS, Test Scenario Settings)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          },
+          {
+            "requirement": "Verify the 'Continue Previous Scenario' toggle switch remains disabled",
+            "triples": [
+              "(Continue Previous Scenario, REMAINS_DISABLED, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Scenario Settings"
+          }
+        ]
+      },
+      {
+        "test_case": "TC015: Test Renaming a Test Case using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the test case named 'TC_04' in the Test Studio page.",
+            "triples": [
+              "(User, LOCATES, TC_04)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon corresponding to the test case.",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Click on the 'Rename' option in the Actions menu.",
+            "triples": [
+              "(User, CLICKS, Rename)",
+              "(Rename, IS_IN, Actions)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "In the 'Rename Testcase' modal, click into the 'Testcase name input field'.",
+            "triples": [
+              "(User, CLICKS_INTO, Testcase name)",
+              "(Testcase name, IS_IN, Rename Testcase)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Enter the new test case name (e.g., 'TC_04_Renamed') into the input field.",
+            "triples": [
+              "(User, ENTERS, new test case name)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Click the 'SAVE' button in the Rename Testcase modal.",
+            "triples": [
+              "(User, CLICKS, SAVE)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio."
+          }
+        ]
+      },
+      {
+        "test_case": "TC016: Test Copying a Test Case using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the test case to be copied (e.g., TC_",
+            "triples": [
+              "(User, LOCATES, test case)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "in the test case list",
+            "triples": [],
+            "annotations": [],
+            "error": "500: Unexpected response: {\n  \"candidates\": [\n    {\n      \"content\": {\n        \"role\": \"model\"\n      },\n      \"finishReason\": \"STOP\",\n      \"index\": 0\n    }\n  ],\n  \"usageMetadata\": {\n    \"promptTokenCount\": 1584,\n    \"totalTokenCount\": 1941,\n    \"cachedContentTokenCount\": 1009,\n    \"promptTokensDetails\": [\n      {\n        \"modality\": \"TEXT\",\n        \"tokenCount\": 1584\n      }\n    ],\n    \"cacheTokensDetails\": [\n      {\n        \"modality\": \"TEXT\",\n        \"tokenCount\": 1009\n      }\n    ],\n    \"thoughtsTokenCount\": 357\n  },\n  \"modelVersion\": \"gemini-2.5-flash\",\n  \"responseId\": \"pvT0aZSoKYfbg8UP7aOWiAo\"\n}\n",
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon corresponding to the test case",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Copy' option in the Actions menu",
+            "triples": [
+              "(User, CLICKS, Copy)",
+              "(Copy, IS_IN, Actions)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC018: Test Setting Flow Status for Multiple Selected Steps using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the test case in the Test Studio grid that contains multiple steps (ensure steps 1, 2, and 23 are visible)",
+            "triples": [
+              "(User, LOCATES, Test Case)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the checkbox for step 1 to select it",
+            "triples": [
+              "(User, CLICKS, step 1)",
+              "(step 1, SELECTS, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the checkbox for step 2 to select it",
+            "triples": [
+              "(User, CLICKS, checkbox for step 2)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the checkbox for step 23 to select it",
+            "triples": [
+              "(User, CLICKS, step 23)",
+              "(User, SELECTS, step 23)"
+            ],
+            "annotations": [
+              "[step 23 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and click the 'Actions menu (three dots)' icon to open the context menu",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the 'Set Flow Status' option in the context menu",
+            "triples": [
+              "(User, CLICKS, Set Flow Status)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC026: Test Adding Test Case to Test Suite using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio page.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the 'Actions menu (three dots)' icon for the desired test case.",
+            "triples": [
+              "(User, LOCATES, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon to open the context menu. In the context menu, locate the 'Add to test suite' option.",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Add to test suite' option to open the Add to Test Suite modal.",
+            "triples": [
+              "(User, CLICKS, Add to test suite)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the Add to Test Suite modal, locate the 'Products dropdown'.",
+            "triples": [
+              "(User, LOCATES, Products)",
+              "(Products, IS_IN, Add to Test Suite)"
+            ],
+            "annotations": [
+              "[Products :: Dropdown]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Click on the 'Products dropdown' to expand the list of available products.",
+            "triples": [
+              "(User, CLICKS, Products)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Select 'Banking' from the products dropdown.",
+            "triples": [
+              "(User, SELECTS, Banking)",
+              "(Banking, IS_FROM, Product)"
+            ],
+            "annotations": [
+              "[Product :: Dropdown]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Locate the 'Suite dropdown' in the modal.",
+            "triples": [
+              "(User, LOCATES, Suite)",
+              "(Suite, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Suite :: Dropdown]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Click on the 'Suite dropdown' to expand the list of available suites.",
+            "triples": [
+              "(User, CLICKS, Suite)",
+              "(Suite, EXPANDS, List of Available Suites)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Select 'nogrunt' from the suite dropdown.",
+            "triples": [
+              "(User, SELECTS, nogrunt)",
+              "(nogrunt, IS_FROM, suite)"
+            ],
+            "annotations": [
+              "[suite :: Dropdown]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Locate the 'SAVE' button in the modal.",
+            "triples": [
+              "(User, LOCATES, SAVE)",
+              "(SAVE, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[SAVE :: Button]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          },
+          {
+            "requirement": "Click on the 'SAVE' button to save the test suite selection and close the modal.",
+            "triples": [
+              "(User, CLICKS, SAVE)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Add to Test Suite"
+          }
+        ]
+      },
+      {
+        "test_case": "TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the test case to manage baseline images for",
+            "triples": [
+              "(User, LOCATES, Test Case)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon for the selected test case",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the Actions Menu modal, click on the 'Baseline images' option",
+            "triples": [
+              "(User, CLICKS, Baseline images)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC028: Test Viewing Test Case Information using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the test case named 'TC_04 selected' in the Test Scenario dropdown",
+            "triples": [
+              "(User, LOCATES, TC_04 selected)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Actions menu (three dots)' icon for the selected test case",
+            "triples": [
+              "(User, CLICKS, Actions menu (three dots))"
+            ],
+            "annotations": [
+              "[Actions menu (three dots) :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Info' option in the Actions Menu",
+            "triples": [
+              "(User, CLICKS, Info)",
+              "(Info, IS_IN, Actions)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the 'Created date' text",
+            "triples": [
+              "(User, VERIFIES_PRESENCE_OF, Created date)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the actual creation date and time (e.g., '2025-05-30 13:56:46.0')",
+            "triples": [
+              "(User, VERIFIES_PRESENCE, actual creation date and time)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the 'Created by' text",
+            "triples": [
+              "(Created by, IS_PRESENT, True)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the 'Baseline Date' text",
+            "triples": [
+              "(User, VERIFIES_PRESENCE_OF, Baseline Date)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Test Case Info' modal, verify the presence of the baseline date value (e.g., '0')",
+            "triples": [
+              "(User, VERIFIES, baseline date value)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click the 'Close' button in the 'Test Case Info' modal",
+            "triples": [
+              "(User, CLICKS, Close)",
+              "(Close, IS_IN, Test Case Info)"
+            ],
+            "annotations": [
+              "[Close :: Button]",
+              "[Test Case Info :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC029: Test Replacing Selected Test Steps with Steps from Another Test Case using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the test case to be edited in the Test Studio page",
+            "triples": [
+              "(User, LOCATES, Test Case)",
+              "(Test Case, IS_IN, Test Studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Select the checkbox for step 2",
+            "triples": [
+              "(User, SELECTS, step 2)"
+            ],
+            "annotations": [
+              "[step 2 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Select the checkbox for step 23",
+            "triples": [
+              "(User, SELECTS, step 23)"
+            ],
+            "annotations": [
+              "[step 23 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Select the checkbox for step 30",
+            "triples": [
+              "(User, SELECTS, step 30)"
+            ],
+            "annotations": [
+              "[step 30 :: Checkbox]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'More Options' icon to open the context menu",
+            "triples": [
+              "(User, CLICKS, More Options)",
+              "(More Options, OPENS, Context Menu)"
+            ],
+            "annotations": [
+              "[More Options :: Icon]",
+              "[Context Menu :: Menu]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'Replace Test Steps' option in the context menu",
+            "triples": [
+              "(User, CLICKS, Replace Test Steps)",
+              "(Replace Test Steps, IS_IN, Context Menu)"
+            ],
+            "annotations": [
+              "[Replace Test Steps :: Option]",
+              "[Context Menu :: Menu]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "In the 'Are you sure you want to Replace selected test steps?' modal, enter '1' in the 'Enter Test Case Id input field'",
+            "triples": [
+              "(User, ENTERS, 1)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Click on the 'REPLACE' button in the modal",
+            "triples": [
+              "(User, CLICKS, REPLACE)",
+              "(REPLACE, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[REPLACE :: Button]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC030: Test Inlining Test Steps from Another Test Case using Actions Menu in Test Studio Page",
+        "results": [
+          {
+            "requirement": "Click on the checkbox for step 2 to select step 2 in the current test case.",
+            "triples": [
+              "(User, CLICKS, step 2)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click on the \"More Options\" icon to open the context menu.",
+            "triples": [
+              "(User, CLICKS, More Options)",
+              "(More Options, OPENS, context)"
+            ],
+            "annotations": [
+              "[More Options :: Icon]",
+              "[context :: Menu]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click on the 'Inline Test Steps' option in the Actions menu to open the Create Inline Dependence modal.",
+            "triples": [
+              "(User, CLICKS, Inline Test Steps)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Enter the test case ID to embed in the 'Enter Test Case Id' input field in the modal.",
+            "triples": [
+              "(User, ENTERS, test case ID to embed)",
+              "(User, ENTERS_INTO, Enter Test Case Id)",
+              "(Enter Test Case Id, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Enter Test Case Id :: Input]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Create Inline Dependence"
+          },
+          {
+            "requirement": "Click on the 'REPLACE INLINE TEST CASE' button to confirm and perform the inline operation.",
+            "triples": [
+              "(User, CLICKS, REPLACE INLINE TEST CASE)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Create Inline Dependence"
+          }
+        ]
+      },
+      {
+        "test_case": "TC034: Test Navigation to Execution Reports Page from Test Studio Page",
+        "results": [
+          {
+            "requirement": "Locate the 'Execution Reports' button on the Test Studio page.",
+            "triples": [
+              "(User, LOCATES, Execution Reports)",
+              "(Execution Reports, IS_ON, Test Studio)"
+            ],
+            "annotations": [
+              "[Execution Reports :: Button]",
+              "[Test Studio :: Page]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Execution Reports' button.",
+            "triples": [
+              "(User, CLICKS, Execution Reports)"
+            ],
+            "annotations": [
+              "[Execution Reports :: Button]"
+            ],
+            "error": null,
+            "current_page": "Test Studio"
+          }
+        ]
+      },
+      {
+        "test_case": "TC035: Test Opening and Closing Review Execution Flow Modal from Test Studio Page",
+        "results": [
+          {
+            "requirement": "Locate the 'Review Flow' button on the https://automate.nogrunt.com/new/test-studio page.",
+            "triples": [
+              "(User, LOCATES, Review Flow)",
+              "(Review Flow, IS_ON, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [
+              "[Review Flow :: Button]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Review Flow' button.",
+            "triples": [
+              "(User, CLICKS, Review Flow)"
+            ],
+            "annotations": [
+              "[Review Flow :: Button]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Verify that the 'Review Execution Flow' modal appears on the screen.",
+            "triples": [
+              "(Review Execution Flow, APPEARS, True)",
+              "(Review Execution Flow, IS_ON, Screen)"
+            ],
+            "annotations": [
+              "[Review Execution Flow :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate the 'Close' icon within the 'Review Execution Flow' modal.",
+            "triples": [
+              "(User, LOCATES, Close)",
+              "(Close, IS_IN, Review Execution Flow)"
+            ],
+            "annotations": [
+              "[Close :: Icon]",
+              "[Review Execution Flow :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Close' icon.",
+            "triples": [
+              "(User, CLICKS, Close)"
+            ],
+            "annotations": [
+              "[Close :: Icon]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          }
+        ]
+      },
+      {
+        "test_case": "TC036: Test Enabling and Disabling Debug Mode in Debug Configuration Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio.",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Execute in Debug Mode' button to open the Debug Configuration modal.",
+            "triples": [
+              "(User, CLICKS, Execute in Debug Mode)",
+              "(Execute in Debug Mode, OPENS, Debug Configuration)"
+            ],
+            "annotations": [
+              "[Execute in Debug Mode :: Button]",
+              "[Debug Configuration :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Test Studio."
+          },
+          {
+            "requirement": "Verify the Debug Configuration modal is displayed.",
+            "triples": [
+              "(Debug Configuration, IS_DISPLAYED, True)"
+            ],
+            "annotations": [
+              "[Debug Configuration :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate the 'Enable Debug Mode' toggle switch in the modal.",
+            "triples": [
+              "(User, LOCATES, Enable Debug Mode)",
+              "(Enable Debug Mode, IS_IN, Modal)"
+            ],
+            "annotations": [
+              "[Enable Debug Mode :: Toggle]",
+              "[Modal :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Click the 'Enable Debug Mode' toggle switch to enable debug mode.",
+            "triples": [
+              "(User, CLICKS, Enable Debug Mode)",
+              "(Enable Debug Mode, ENABLES, Debug Mode)"
+            ],
+            "annotations": [
+              "[Enable Debug Mode :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Verify that the toggle switch is now in the enabled (on) state.",
+            "triples": [
+              "(Toggle Switch, IS_ENABLED, True)"
+            ],
+            "annotations": [
+              "[Toggle Switch :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Click the 'Enable Debug Mode' toggle switch again to disable debug mode.",
+            "triples": [
+              "(User, CLICKS, Enable Debug Mode)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Verify that the toggle switch is now in the disabled (off) state.",
+            "triples": [
+              "(Toggle Switch, IS_DISABLED, True)"
+            ],
+            "annotations": [
+              "[Toggle Switch :: Toggle]"
+            ],
+            "error": null,
+            "current_page": "Debug Configuration"
+          }
+        ]
+      },
+      {
+        "test_case": "TC037: Test Go to Step Debug Mode Type in Debug Configuration Modal",
+        "results": [
+          {
+            "requirement": "Click on the 'Execute in Debug Mode' button on the https://automate.nogrunt.com/new/test-studio page.",
+            "triples": [
+              "(User, CLICKS, Execute in Debug Mode)",
+              "(Execute in Debug Mode, IS_ON, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [
+              "[Execute in Debug Mode :: Button]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "In the Debug Configuration modal, toggle the 'Enable Debug Mode' switch to ON.",
+            "triples": [
+              "(User, SETS_TO, ON)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Go to Step' radio button to select the Go to Step debug mode type.",
+            "triples": [
+              "(User, CLICKS, Go to Step)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click on the 'Select step to go to dropdown' to open the list of available steps.",
+            "triples": [
+              "(User, CLICKS, Select step to go to)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Select 'Step 23: EditBox Clear & Enter' from the dropdown as the target step.",
+            "triples": [
+              "(User, SELECTS, Step 23: EditBox Clear & Enter)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Click the 'Run' button in the Debug Configuration modal.",
+            "triples": [
+              "(User, CLICKS, Run)",
+              "(Run, IS_IN, Debug Configuration)"
+            ],
+            "annotations": [
+              "[Run :: Button]",
+              "[Debug Configuration :: Modal]"
+            ],
+            "error": null,
+            "current_page": "Unknown"
+          }
+        ]
+      },
+      {
+        "test_case": "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal",
+        "results": [
+          {
+            "requirement": "Navigate to https://automate.nogrunt.com/new/test-studio",
+            "triples": [
+              "(User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Unknown"
+          },
+          {
+            "requirement": "Locate and click the 'Execute in Debug Mode' button to open the Debug Configuration modal",
+            "triples": [
+              "(User, CLICKS, Execute in Debug Mode)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Test Studio"
+          },
+          {
+            "requirement": "Locate and toggle the 'Enable Debug Mode' switch to ON",
+            "triples": [
+              "(User, TOGGLES_TO_ON, Enable Debug Mode)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate and click the 'Resume After Step' radio button to select the Resume After Step debug mode type",
+            "triples": [
+              "(User, CLICKS, Resume After Step)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate and click the 'Select step to go to dropdown' In the dropdown, select 'Step 23: EditBox Clear & Enter' as the target step",
+            "triples": [
+              "(User, CLICKS, Select step to go to)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          },
+          {
+            "requirement": "Locate and click the 'Run' button to start debug execution in Resume After Step mode",
+            "triples": [
+              "(User, CLICKS, Run)"
+            ],
+            "annotations": [],
+            "error": null,
+            "current_page": "Debug Configuration"
+          }
+        ]
+      }
+    ]
   }
 ]

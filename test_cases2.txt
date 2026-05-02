@@ -1,5 +1,5 @@
 ====================================================
-  Run: 1  |  2026-05-01 18:56 UTC
+  Run: 1  |  2026-04-29 17:55 UTC
 ====================================================
 
 -- TC002: Test Environment Selection in Test Scenario Settings Modal 
@@ -18,6 +18,7 @@ Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 PAGE: Test Scenario Settings
 Verify the 'Environment label' is visible in the modal
 (Environment label, IS_VISIBLE, True)
+(Environment label, IS_IN, Modal)
 
 PAGE: Test Scenario Settings
 Click the 'Dev' button to select the Dev environment
@@ -52,6 +53,8 @@ PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal again
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
+[Settings :: Icon]
+[Test Scenario Settings :: Modal]
 
 PAGE: Test Scenario Settings
 Click the 'QA' button to select the QA environment
@@ -116,8 +119,8 @@ Enter a description text, e.g., 'Verify login workflow #login #smoke'
 
 PAGE: Test Scenario Settings
 Verify that the entered description appears in the input field
-(Entered description, APPEARS_IN, Input field)
-[Input field :: Input]
+(Entered Description, APPEARS_IN, Input)
+[Input :: Input]
 
 PAGE: Test Scenario Settings
 Add one or more hashtags in the description, e.g., '#login #smoke'
@@ -125,7 +128,8 @@ Add one or more hashtags in the description, e.g., '#login #smoke'
 
 PAGE: Test Scenario Settings
 Verify that hashtags are included in the description input field
-(Hashtags, ARE_INCLUDED_IN, Description)
+(Description, CONTAINS, hashtags)
+[Description :: Input]
 
 PAGE: Test Scenario Settings
 Click the 'Save' button in the Test Scenario Settings modal
@@ -303,6 +307,8 @@ Navigate to https://automate.nogrunt.com/new/test-studio.
 PAGE: Test Studio.
 Locate the test case named 'TC_04' in the Test Studio page.
 (User, LOCATES, TC_04)
+(TC_04, IS_IN, Test Studio)
+[Test Studio :: Page]
 
 PAGE: Test Studio.
 Click on the 'Actions menu (three dots)' icon corresponding to the test case.
@@ -310,18 +316,15 @@ Click on the 'Actions menu (three dots)' icon corresponding to the test case.
 [Actions menu (three dots) :: Icon]
 
 PAGE: Test Studio.
-Click on the 'Rename' option in the Actions menu.
+Click on the 'Rename' option in the Actions menu. In the 'Rename Testcase' modal, click into the 'Testcase name input field'.
 (User, CLICKS, Rename)
 (Rename, IS_IN, Actions)
 
 PAGE: Test Studio.
-In the 'Rename Testcase' modal, click into the 'Testcase name input field'.
-(User, CLICKS_INTO, Testcase name)
-(Testcase name, IS_IN, Rename Testcase)
-
-PAGE: Test Studio.
 Enter the new test case name (e.g., 'TC_04_Renamed') into the input field.
-(User, ENTERS, new test case name)
+(User, ENTERS, New Test Case Name)
+(User, ENTERS_INTO, Input)
+[Input :: Input]
 
 PAGE: Test Studio.
 Click the 'SAVE' button in the Rename Testcase modal.
@@ -367,14 +370,13 @@ Locate the test case to be copied (e.g., TC_
     "thoughtsTokenCount": 357
   },
   "modelVersion": "gemini-2.5-flash",
-  "responseId": "pvT0aZSoKYfbg8UP7aOWiAo"
+  "responseId": "JETyaarHE5aN4-EPuKuJuAM"
 }
 
 
 PAGE: Test Studio
 Click on the 'Actions menu (three dots)' icon corresponding to the test case
 (User, CLICKS, Actions menu (three dots))
-[Actions menu (three dots) :: Icon]
 
 PAGE: Test Studio
 Click on the 'Copy' option in the Actions menu
@@ -403,9 +405,9 @@ Click the checkbox for step 2 to select it
 
 PAGE: Test Studio
 Click the checkbox for step 23 to select it
-(User, CLICKS, step 23)
-(User, SELECTS, step 23)
-[step 23 :: Checkbox]
+(User, CLICKS, Step 23)
+(User, SELECTS, Step 23)
+[Step 23 :: Checkbox]
 
 PAGE: Test Studio
 Locate and click the 'Actions menu (three dots)' icon to open the context menu
@@ -432,14 +434,8 @@ Click on the 'Actions menu (three dots)' icon to open the context menu. In the c
 (User, CLICKS, Actions menu (three dots))
 
 PAGE: Test Studio
-Click on the 'Add to test suite' option to open the Add to Test Suite modal.
+Click on the 'Add to test suite' option to open the Add to Test Suite modal. In the Add to Test Suite modal, locate the 'Products dropdown'.
 (User, CLICKS, Add to test suite)
-
-PAGE: Add to Test Suite
-In the Add to Test Suite modal, locate the 'Products dropdown'.
-(User, LOCATES, Products)
-(Products, IS_IN, Add to Test Suite)
-[Products :: Dropdown]
 
 PAGE: Add to Test Suite
 Click on the 'Products dropdown' to expand the list of available products.
@@ -479,6 +475,7 @@ Locate the 'SAVE' button in the modal.
 PAGE: Add to Test Suite
 Click on the 'SAVE' button to save the test suite selection and close the modal.
 (User, CLICKS, SAVE)
+(SAVE, SAVES, Test Suite Selection)
 
 
 -- TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page 
@@ -492,13 +489,8 @@ Locate the test case to manage baseline images for
 (User, LOCATES, Test Case)
 
 PAGE: Test Studio
-Click on the 'Actions menu (three dots)' icon for the selected test case
+Click on the 'Actions menu (three dots)' icon for the selected test case In the Actions Menu modal, click on the 'Baseline images' option
 (User, CLICKS, Actions menu (three dots))
-[Actions menu (three dots) :: Icon]
-
-PAGE: Test Studio
-In the Actions Menu modal, click on the 'Baseline images' option
-(User, CLICKS, Baseline images)
 
 
 -- TC028: Test Viewing Test Case Information using Actions Menu in Test Studio Page 
@@ -510,6 +502,8 @@ Navigate to https://automate.nogrunt.com/new/test-studio
 PAGE: Test Studio
 Locate the test case named 'TC_04 selected' in the Test Scenario dropdown
 (User, LOCATES, TC_04 selected)
+(TC_04 selected, IS_IN, Test Scenario)
+[Test Scenario :: Dropdown]
 
 PAGE: Test Studio
 Click on the 'Actions menu (three dots)' icon for the selected test case
@@ -517,29 +511,9 @@ Click on the 'Actions menu (three dots)' icon for the selected test case
 [Actions menu (three dots) :: Icon]
 
 PAGE: Test Studio
-Click on the 'Info' option in the Actions Menu
+Click on the 'Info' option in the Actions Menu In the 'Test Case Info' modal, verify the presence of the 'Created date' text In the 'Test Case Info' modal, verify the presence of the actual creation date and time (e.g., '2025-05-30 13:56:46.0') In the 'Test Case Info' modal, verify the presence of the 'Created by' text In the 'Test Case Info' modal, verify the presence of the 'Baseline Date' text In the 'Test Case Info' modal, verify the presence of the baseline date value (e.g., '0')
 (User, CLICKS, Info)
-(Info, IS_IN, Actions)
-
-PAGE: Test Studio
-In the 'Test Case Info' modal, verify the presence of the 'Created date' text
-(User, VERIFIES_PRESENCE_OF, Created date)
-
-PAGE: Test Studio
-In the 'Test Case Info' modal, verify the presence of the actual creation date and time (e.g., '2025-05-30 13:56:46.0')
-(User, VERIFIES_PRESENCE, actual creation date and time)
-
-PAGE: Test Studio
-In the 'Test Case Info' modal, verify the presence of the 'Created by' text
-(Created by, IS_PRESENT, True)
-
-PAGE: Test Studio
-In the 'Test Case Info' modal, verify the presence of the 'Baseline Date' text
-(User, VERIFIES_PRESENCE_OF, Baseline Date)
-
-PAGE: Test Studio
-In the 'Test Case Info' modal, verify the presence of the baseline date value (e.g., '0')
-(User, VERIFIES, baseline date value)
+(Info, IS_IN, Actions Menu)
 
 PAGE: Test Studio
 Click the 'Close' button in the 'Test Case Info' modal
@@ -583,15 +557,8 @@ Click on the 'More Options' icon to open the context menu
 [Context Menu :: Menu]
 
 PAGE: Test Studio
-Click on the 'Replace Test Steps' option in the context menu
+Click on the 'Replace Test Steps' option in the context menu In the 'Are you sure you want to Replace selected test steps?' modal, enter '1' in the 'Enter Test Case Id input field'
 (User, CLICKS, Replace Test Steps)
-(Replace Test Steps, IS_IN, Context Menu)
-[Replace Test Steps :: Option]
-[Context Menu :: Menu]
-
-PAGE: Test Studio
-In the 'Are you sure you want to Replace selected test steps?' modal, enter '1' in the 'Enter Test Case Id input field'
-(User, ENTERS, 1)
 
 PAGE: Test Studio
 Click on the 'REPLACE' button in the modal
@@ -610,9 +577,9 @@ Click on the checkbox for step 2 to select step 2 in the current test case.
 PAGE: Unknown
 Click on the "More Options" icon to open the context menu.
 (User, CLICKS, More Options)
-(More Options, OPENS, context)
+(More Options, OPENS, Context Menu)
 [More Options :: Icon]
-[context :: Menu]
+[Context Menu :: Menu]
 
 PAGE: Unknown
 Click on the 'Inline Test Steps' option in the Actions menu to open the Create Inline Dependence modal.
@@ -629,6 +596,7 @@ Enter the test case ID to embed in the 'Enter Test Case Id' input field in the m
 PAGE: Create Inline Dependence
 Click on the 'REPLACE INLINE TEST CASE' button to confirm and perform the inline operation.
 (User, CLICKS, REPLACE INLINE TEST CASE)
+[REPLACE INLINE TEST CASE :: Button]
 
 
 -- TC034: Test Navigation to Execution Reports Page from Test Studio Page 
@@ -727,14 +695,8 @@ Verify that the toggle switch is now in the disabled (off) state.
 -- TC037: Test Go to Step Debug Mode Type in Debug Configuration Modal 
 
 PAGE: Unknown
-Click on the 'Execute in Debug Mode' button on the https://automate.nogrunt.com/new/test-studio page.
+Click on the 'Execute in Debug Mode' button on the https://automate.nogrunt.com/new/test-studio page. In the Debug Configuration modal, toggle the 'Enable Debug Mode' switch to ON.
 (User, CLICKS, Execute in Debug Mode)
-(Execute in Debug Mode, IS_ON, https://automate.nogrunt.com/new/test-studio)
-[Execute in Debug Mode :: Button]
-
-PAGE: Unknown
-In the Debug Configuration modal, toggle the 'Enable Debug Mode' switch to ON.
-(User, SETS_TO, ON)
 
 PAGE: Unknown
 Click the 'Go to Step' radio button to select the Go to Step debug mode type.
@@ -743,6 +705,8 @@ Click the 'Go to Step' radio button to select the Go to Step debug mode type.
 PAGE: Unknown
 Click on the 'Select step to go to dropdown' to open the list of available steps.
 (User, CLICKS, Select step to go to)
+(Select step to go to, OPENS, list of available steps)
+[Select step to go to :: Dropdown]
 
 PAGE: Unknown
 Select 'Step 23: EditBox Clear & Enter' from the dropdown as the target step.
@@ -773,6 +737,8 @@ Locate and toggle the 'Enable Debug Mode' switch to ON
 PAGE: Debug Configuration
 Locate and click the 'Resume After Step' radio button to select the Resume After Step debug mode type
 (User, CLICKS, Resume After Step)
+(User, SELECTS, Resume After Step debug mode type)
+[Resume After Step :: Button]
 
 PAGE: Debug Configuration
 Locate and click the 'Select step to go to dropdown' In the dropdown, select 'Step 23: EditBox Clear & Enter' as the target step
@@ -781,5 +747,3 @@ Locate and click the 'Select step to go to dropdown' In the dropdown, select 'St
 PAGE: Debug Configuration
 Locate and click the 'Run' button to start debug execution in Resume After Step mode
 (User, CLICKS, Run)
-
-

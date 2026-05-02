@@ -12,5 +12,47 @@
     "test_case": "TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page",
     "location": "Test Studio page",
     "desc": "A test case for which baseline images can be managed."
+  },
+  "TC001: Test Opening Test Scenario Settings Modal from Test Studio Page | Settings": {
+    "name": "Settings",
+    "type": "Icon",
+    "test_case": "TC001: Test Opening Test Scenario Settings Modal from Test Studio Page",
+    "location": "Test Studio page",
+    "desc": "An icon that is clicked."
+  },
+  "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal | Enable Debug Mode": {
+    "name": "Enable Debug Mode",
+    "type": "",
+    "test_case": "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal",
+    "location": "Debug Configuration modal",
+    "desc": "Toggles debug mode ON."
+  },
+  "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal | Execute in Debug Mode": {
+    "name": "Execute in Debug Mode",
+    "type": "",
+    "test_case": "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal",
+    "location": "Test Studio page",
+    "desc": "Opens the Debug Configuration modal when clicked."
+  },
+  "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal | Resume After Step": {
+    "name": "Resume After Step",
+    "type": "",
+    "test_case": "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal",
+    "location": "Debug Configuration modal",
+    "desc": "Selects the Resume After Step debug mode type when clicked."
+  },
+  "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal | Run": {
+    "name": "Run",
+    "type": "",
+    "test_case": "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal",
+    "location": "Debug Configuration modal",
+    "desc": "Starts debug execution in Resume After Step mode when clicked."
+  },
+  "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal | Select step to go to": {
+    "name": "Select step to go to",
+    "type": "",
+    "test_case": "TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal",
+    "location": "Debug Configuration modal",
+    "desc": "Allows selecting 'Step 23: EditBox Clear & Enter' as the target step from its dropdown."
   }
 }

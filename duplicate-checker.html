@@ -1208,23 +1208,34 @@ function resetToUpload() {
 // ── Parser ────────────────────────────────────────────────────────
 
 function parseFile(text) {
-  const lines = text.split('\n');
+  // Only parse the LAST run — find the last run header and slice from there
+  const allLines = text.split('\n');
+  let lastRunStart = 0;
+  for (let i = 0; i < allLines.length - 1; i++) {
+    if (/^={3,}/.test(allLines[i].trim()) && allLines[i+1] && allLines[i+1].trim().startsWith('Run:')) {
+      lastRunStart = i;
+    }
+  }
+  const lines = allLines.slice(lastRunStart);
+
   const testCases = [];
   let currentTC   = null;
   let currentStep = null;
+  let currentPage = null;
 
   const isRunHeader = l => /^={3,}/.test(l.trim());
   const isRunMeta   = l => l.trim().startsWith('Run:');
   const isTCHeader  = l => /^--\s+/.test(l.trim());
   const isTriple    = l => /^\s*\(.+?,\s*[A-Z_]+\s*,.+?\)\s*$/.test(l.trim());
   const isAnnot     = l => /^\s*\[.+?::.+?\]\s*$/.test(l.trim());
+  const isPage      = l => /^PAGE\s*:/.test(l);
 
   let stepCounter = 0;
 
   function flushStep() {
-    if (currentStep && currentTC && currentStep.triples.length > 0) {
+    if (currentStep && currentTC && currentStep.requirement) {
       currentStep.stepId  = 'step_' + (stepCounter++);
-      currentStep.stepNum = currentTC.steps.length + 1;  // 1-based position within TC
+      currentStep.stepNum = currentTC.steps.length + 1;
       currentTC.steps.push(currentStep);
     }
     currentStep = null;
@@ -1261,22 +1272,55 @@ function parseFile(text) {
       continue;
     }
 
+    if (isPage(l)) {
+      currentPage = l.replace(/PAGE\s*:/i, '').trim();
+      continue;
+    }
+
+    // Skip [ERROR] lines and JSON content from error blocks
+    if (l.startsWith('[ERROR]')) { continue; }
+    if (/^[{}"\[\]]/.test(l)) { continue; }
+    if (/^\s*"[^"]+"\s*[:{,]/.test(l)) { continue; }
+    if (/^(modelVersion|responseId|finishReason|usageMetadata|candidates|promptTokenCount|totalTokenCount|thoughtsTokenCount|tokenCount|modality|index|role)/.test(l)) { continue; }
+
     if (l === '') { flushStep(); continue; }
 
     // Requirement line
     flushStep();
-    currentStep = { requirement: l, triples: [], annotations: [] };
+    currentStep = { requirement: l, triples: [], annotations: [], page: currentPage || 'Unknown' };
   }
 
   flushTC();
+
+  // ── Triple priority classification ───────────────────────────────
+  // PRIMARY  — subject is User (user performs action or verifies)
+  // SECONDARY — subject is an entity (result, state, location context)
+  function classifyTriples(triples) {
+    const primary = [], secondary = [];
+    for (const t of triples) {
+      const inner = t.replace(/^\(|\)$/g, '');
+      const subject = inner.split(',')[0].trim().toLowerCase();
+      if (subject === 'user') primary.push(t.trim().toLowerCase());
+      else                    secondary.push(t.trim().toLowerCase());
+    }
+    return { primary, secondary };
+  }
 
   // ── Duplicate detection ───────────────────────────────────────
   const fpMap = {};
 
   for (const tc of testCases) {
     for (const step of tc.steps) {
-      const fp = step.triples.map(t => t.trim().toLowerCase()).sort().join('|||');
+      const { primary, secondary } = classifyTriples(step.triples);
+      step.primaryTriples   = primary;
+      step.secondaryTriples = secondary;
+
+      // Match duplicates on PRIMARY triples only — secondary are context/result info
+      // If a step has no primary triples, fall back to all triples
+      const matchTriples = primary.length > 0 ? primary : step.triples.map(t => t.trim().toLowerCase());
+      const fp = matchTriples.sort().join('|||');
       step.fingerprint = fp;
+
       if (!fpMap[fp]) fpMap[fp] = [];
       fpMap[fp].push({ tcTitle: tc.title, requirement: step.requirement, stepId: step.stepId, stepNum: step.stepNum });
     }
@@ -1406,23 +1450,28 @@ function buildStep(step, idx) {
     ? '<span class="dup-badge">DUPLICATE</span>'
     : '';
 
-  const tripleRows = step.triples.map(t => {
+  function renderTriple(t, isPrimary) {
     const inner = t.replace(/^\(|\)$/g, '');
     const parts = inner.split(',').map(p => p.trim());
+    const badge = isPrimary
+      ? `<span style="font-size:9px;font-weight:600;background:#dbeafe;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:3px;padding:0 4px;margin-right:5px;letter-spacing:0.04em">PRIMARY</span>`
+      : `<span style="font-size:9px;font-weight:600;background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb;border-radius:3px;padding:0 4px;margin-right:5px;letter-spacing:0.04em">SECONDARY</span>`;
     if (parts.length >= 3) {
       const subj = parts[0];
       const pred = parts[1];
       const obj  = parts.slice(2).join(', ');
-      // Skip URL-like objects — don't make them clickable
       const objIsUrl = /^https?:\/\/|^socks5?:\/\/|^ftp:\/\//.test(obj);
       const subjSpan = `<span class="t-subject entity-link" data-entity="${esc(subj)}">${esc(subj)}</span>`;
       const objSpan  = objIsUrl
         ? `<span class="t-object">${esc(obj)}</span>`
         : `<span class="t-object entity-link" data-entity="${esc(obj)}">${esc(obj)}</span>`;
-      return `<div class="triple-row"><span class="t-punc">(</span>${subjSpan}<span class="t-punc">, </span><span class="t-pred">${esc(pred)}</span><span class="t-punc">, </span>${objSpan}<span class="t-punc">)</span></div>`;
+      return `<div class="triple-row">${badge}<span class="t-punc">(</span>${subjSpan}<span class="t-punc">, </span><span class="t-pred">${esc(pred)}</span><span class="t-punc">, </span>${objSpan}<span class="t-punc">)</span></div>`;
     }
-    return `<div class="triple-row">${esc(t)}</div>`;
-  }).join('');
+    return `<div class="triple-row">${badge}${esc(t)}</div>`;
+  }
+
+  const primarySet = new Set((step.primaryTriples || []).map(t => t.trim().toLowerCase()));
+  const tripleRows = step.triples.map(t => renderTriple(t, primarySet.has(t.trim().toLowerCase()))).join('');
 
   const annotRows = step.annotations.map(a =>
     `<div class="annot-row">${esc(a)}</div>`
@@ -1446,7 +1495,10 @@ function buildStep(step, idx) {
     <div id="${step.stepId}" class="step${step.isDup ? ' is-dup' : ''}">
       <div class="step-head" onclick="this.closest('.step').classList.toggle('sopen')">
         <span class="step-num">${idx}.</span>
-        <span class="step-req">${esc(step.requirement)}</span>
+        <div style="flex:1">
+          ${step.page && step.page !== 'Unknown' ? `<span style="font-size:10px;font-weight:600;color:var(--accent);letter-spacing:0.04em;display:block;margin-bottom:2px">📄 ${esc(step.page)}</span>` : ''}
+          <span class="step-req">${esc(step.requirement)}</span>
+        </div>
         ${dupBadge}
         <span class="step-meta">${step.triples.length}t ▾</span>
       </div>

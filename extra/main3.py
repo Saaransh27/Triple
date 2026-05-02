@@ -419,7 +419,7 @@ def parse_excel(file_bytes: bytes) -> list[dict]:
                     continue
                 if not merged:
                     merged.append(line)
-                elif step_verb_re.match(line) or numbered_re.match(line):
+                elif step_verb_re.match(line) or numbered_re.match(line) or re.match(r"^In the ['\"\ A-Z]", line):
                     merged.append(line)
                 else:
                     merged[-1] += ' ' + line   # fragment — join to previous

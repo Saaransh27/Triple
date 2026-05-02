@@ -1,14 +1,14 @@
 ====================================================
-  Run: 1  |  2026-05-01 18:56 UTC
+  Run: 1  |  2026-04-30 09:47 UTC
 ====================================================
 
 -- TC002: Test Environment Selection in Test Scenario Settings Modal 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-PAGE: Test Studio
+PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
@@ -18,6 +18,7 @@ Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 PAGE: Test Scenario Settings
 Verify the 'Environment label' is visible in the modal
 (Environment label, IS_VISIBLE, True)
+(Environment label, IS_IN, Modal)
 
 PAGE: Test Scenario Settings
 Click the 'Dev' button to select the Dev environment
@@ -68,8 +69,6 @@ PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal again
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
-[Settings :: Icon]
-[Test Scenario Settings :: Modal]
 
 PAGE: Test Scenario Settings
 Click the 'Prod' button to select the Prod environment
@@ -85,11 +84,11 @@ Click the 'Save' button to save the environment selection and close the modal
 
 -- TC003: Test Description Input and Hashtag Addition in Test Scenario Settings Modal 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-PAGE: Test Studio
+PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
@@ -137,11 +136,11 @@ Click the 'Save' button in the Test Scenario Settings modal
 
 -- TC006: Test Enabling and Disabling Run Once Option in Test Scenario Settings Modal 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-PAGE: Test Studio
+PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
@@ -180,6 +179,7 @@ Verify the modal closes and settings are saved
 PAGE: Test Scenario Settings
 Reopen the Test Scenario Settings modal by clicking the 'Settings' icon
 (User, CLICKS, Settings)
+(Settings, REOPENS, Test Scenario Settings)
 
 PAGE: Test Scenario Settings
 Verify the 'Run Once' toggle switch is enabled
@@ -206,6 +206,7 @@ Verify the modal closes and settings are saved
 PAGE: Test Scenario Settings
 Reopen the Test Scenario Settings modal by clicking the 'Settings' icon
 (User, CLICKS, Settings)
+(Settings, REOPENS, Test Scenario Settings)
 
 PAGE: Test Scenario Settings
 Verify the 'Run Once' toggle switch is disabled
@@ -215,7 +216,7 @@ Verify the 'Run Once' toggle switch is disabled
 
 -- TC008: Test Enabling and Disabling Continue Previous Scenario Option in Test Scenario Settings Modal 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
@@ -223,7 +224,7 @@ PAGE: Test Studio
 Ensure the test case TC_04 is selected in the Test Scenario dropdown
 (TC_04, IS_SELECTED, True)
 
-PAGE: Test Studio
+PAGE: Test Scenario Settings
 Locate and click the 'Settings' icon to open the Test Scenario Settings modal
 (User, CLICKS, Settings)
 (Settings, OPENS, Test Scenario Settings)
@@ -296,7 +297,7 @@ Verify the 'Continue Previous Scenario' toggle switch remains disabled
 
 -- TC015: Test Renaming a Test Case using Actions Menu in Test Studio Page 
 
-PAGE: Unknown
+PAGE: Test Studio.
 Navigate to https://automate.nogrunt.com/new/test-studio.
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
@@ -318,19 +319,23 @@ PAGE: Test Studio.
 In the 'Rename Testcase' modal, click into the 'Testcase name input field'.
 (User, CLICKS_INTO, Testcase name)
 (Testcase name, IS_IN, Rename Testcase)
+[Testcase name :: Input]
 
 PAGE: Test Studio.
 Enter the new test case name (e.g., 'TC_04_Renamed') into the input field.
 (User, ENTERS, new test case name)
 
-PAGE: Test Studio.
+PAGE: Rename Testcase
 Click the 'SAVE' button in the Rename Testcase modal.
 (User, CLICKS, SAVE)
+(SAVE, IS_IN, Rename Testcase)
+[SAVE :: Button]
+[Rename Testcase :: Modal]
 
 
 -- TC016: Test Copying a Test Case using Actions Menu in Test Studio Page 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
@@ -350,31 +355,23 @@ Locate the test case to be copied (e.g., TC_
   ],
   "usageMetadata": {
     "promptTokenCount": 1584,
-    "totalTokenCount": 1941,
-    "cachedContentTokenCount": 1009,
+    "totalTokenCount": 2071,
     "promptTokensDetails": [
       {
         "modality": "TEXT",
         "tokenCount": 1584
       }
     ],
-    "cacheTokensDetails": [
-      {
-        "modality": "TEXT",
-        "tokenCount": 1009
-      }
-    ],
-    "thoughtsTokenCount": 357
+    "thoughtsTokenCount": 487
   },
   "modelVersion": "gemini-2.5-flash",
-  "responseId": "pvT0aZSoKYfbg8UP7aOWiAo"
+  "responseId": "wiLzad-CI-XljuMP9Ke2oAU"
 }
 
 
 PAGE: Test Studio
 Click on the 'Actions menu (three dots)' icon corresponding to the test case
 (User, CLICKS, Actions menu (three dots))
-[Actions menu (three dots) :: Icon]
 
 PAGE: Test Studio
 Click on the 'Copy' option in the Actions menu
@@ -384,7 +381,7 @@ Click on the 'Copy' option in the Actions menu
 
 -- TC018: Test Setting Flow Status for Multiple Selected Steps using Actions Menu in Test Studio Page 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
@@ -395,11 +392,13 @@ Locate the test case in the Test Studio grid that contains multiple steps (ensur
 PAGE: Test Studio
 Click the checkbox for step 1 to select it
 (User, CLICKS, step 1)
-(step 1, SELECTS, True)
+(User, SELECTS, step 1)
+[step 1 :: Checkbox]
 
 PAGE: Test Studio
 Click the checkbox for step 2 to select it
-(User, CLICKS, checkbox for step 2)
+(User, CLICKS, step 2)
+(User, SELECTS, step 2)
 
 PAGE: Test Studio
 Click the checkbox for step 23 to select it
@@ -410,6 +409,9 @@ Click the checkbox for step 23 to select it
 PAGE: Test Studio
 Locate and click the 'Actions menu (three dots)' icon to open the context menu
 (User, CLICKS, Actions menu (three dots))
+(Actions menu (three dots), OPENS, context)
+[Actions menu (three dots) :: Icon]
+[context :: Menu]
 
 PAGE: Test Studio
 Click the 'Set Flow Status' option in the context menu
@@ -418,7 +420,7 @@ Click the 'Set Flow Status' option in the context menu
 
 -- TC026: Test Adding Test Case to Test Suite using Actions Menu in Test Studio Page 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio page.
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
@@ -431,7 +433,7 @@ PAGE: Test Studio
 Click on the 'Actions menu (three dots)' icon to open the context menu. In the context menu, locate the 'Add to test suite' option.
 (User, CLICKS, Actions menu (three dots))
 
-PAGE: Test Studio
+PAGE: Add to Test Suite
 Click on the 'Add to test suite' option to open the Add to Test Suite modal.
 (User, CLICKS, Add to test suite)
 
@@ -440,6 +442,7 @@ In the Add to Test Suite modal, locate the 'Products dropdown'.
 (User, LOCATES, Products)
 (Products, IS_IN, Add to Test Suite)
 [Products :: Dropdown]
+[Add to Test Suite :: Modal]
 
 PAGE: Add to Test Suite
 Click on the 'Products dropdown' to expand the list of available products.
@@ -479,11 +482,12 @@ Locate the 'SAVE' button in the modal.
 PAGE: Add to Test Suite
 Click on the 'SAVE' button to save the test suite selection and close the modal.
 (User, CLICKS, SAVE)
+(SAVE, SAVES, Test Suite Selection)
 
 
 -- TC027: Test Managing Baseline Images for Visual Testing using Actions Menu in Test Studio Page 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
@@ -499,17 +503,20 @@ Click on the 'Actions menu (three dots)' icon for the selected test case
 PAGE: Test Studio
 In the Actions Menu modal, click on the 'Baseline images' option
 (User, CLICKS, Baseline images)
+(Baseline images, IS_IN, Actions Menu)
 
 
 -- TC028: Test Viewing Test Case Information using Actions Menu in Test Studio Page 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
 PAGE: Test Studio
 Locate the test case named 'TC_04 selected' in the Test Scenario dropdown
 (User, LOCATES, TC_04 selected)
+(TC_04 selected, IS_IN, Test Scenario)
+[Test Scenario :: Dropdown]
 
 PAGE: Test Studio
 Click on the 'Actions menu (three dots)' icon for the selected test case
@@ -519,7 +526,6 @@ Click on the 'Actions menu (three dots)' icon for the selected test case
 PAGE: Test Studio
 Click on the 'Info' option in the Actions Menu
 (User, CLICKS, Info)
-(Info, IS_IN, Actions)
 
 PAGE: Test Studio
 In the 'Test Case Info' modal, verify the presence of the 'Created date' text
@@ -539,19 +545,15 @@ In the 'Test Case Info' modal, verify the presence of the 'Baseline Date' text
 
 PAGE: Test Studio
 In the 'Test Case Info' modal, verify the presence of the baseline date value (e.g., '0')
-(User, VERIFIES, baseline date value)
+(User, VERIFIES_PRESENCE_OF, baseline date value)
 
 PAGE: Test Studio
 Click the 'Close' button in the 'Test Case Info' modal
-(User, CLICKS, Close)
-(Close, IS_IN, Test Case Info)
-[Close :: Button]
-[Test Case Info :: Modal]
 
 
 -- TC029: Test Replacing Selected Test Steps with Steps from Another Test Case using Actions Menu in Test Studio Page 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
@@ -585,9 +587,6 @@ Click on the 'More Options' icon to open the context menu
 PAGE: Test Studio
 Click on the 'Replace Test Steps' option in the context menu
 (User, CLICKS, Replace Test Steps)
-(Replace Test Steps, IS_IN, Context Menu)
-[Replace Test Steps :: Option]
-[Context Menu :: Menu]
 
 PAGE: Test Studio
 In the 'Are you sure you want to Replace selected test steps?' modal, enter '1' in the 'Enter Test Case Id input field'
@@ -606,6 +605,7 @@ Click on the 'REPLACE' button in the modal
 PAGE: Unknown
 Click on the checkbox for step 2 to select step 2 in the current test case.
 (User, CLICKS, step 2)
+(User, SELECTS, step 2)
 
 PAGE: Unknown
 Click on the "More Options" icon to open the context menu.
@@ -614,7 +614,7 @@ Click on the "More Options" icon to open the context menu.
 [More Options :: Icon]
 [context :: Menu]
 
-PAGE: Unknown
+PAGE: Create Inline Dependence
 Click on the 'Inline Test Steps' option in the Actions menu to open the Create Inline Dependence modal.
 (User, CLICKS, Inline Test Steps)
 
@@ -633,7 +633,7 @@ Click on the 'REPLACE INLINE TEST CASE' button to confirm and perform the inline
 
 -- TC034: Test Navigation to Execution Reports Page from Test Studio Page 
 
-PAGE: Unknown
+PAGE: Test Studio
 Locate the 'Execution Reports' button on the Test Studio page.
 (User, LOCATES, Execution Reports)
 (Execution Reports, IS_ON, Test Studio)
@@ -680,11 +680,11 @@ Click the 'Close' icon.
 
 -- TC036: Test Enabling and Disabling Debug Mode in Debug Configuration Modal 
 
-PAGE: Unknown
+PAGE: Test Studio.
 Navigate to https://automate.nogrunt.com/new/test-studio.
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-PAGE: Test Studio.
+PAGE: Debug Configuration
 Locate and click the 'Execute in Debug Mode' button to open the Debug Configuration modal.
 (User, CLICKS, Execute in Debug Mode)
 (Execute in Debug Mode, OPENS, Debug Configuration)
@@ -706,7 +706,7 @@ Locate the 'Enable Debug Mode' toggle switch in the modal.
 PAGE: Debug Configuration
 Click the 'Enable Debug Mode' toggle switch to enable debug mode.
 (User, CLICKS, Enable Debug Mode)
-(Enable Debug Mode, ENABLES, Debug Mode)
+(User, ENABLES, Debug Mode)
 [Enable Debug Mode :: Toggle]
 
 PAGE: Debug Configuration
@@ -748,7 +748,7 @@ PAGE: Unknown
 Select 'Step 23: EditBox Clear & Enter' from the dropdown as the target step.
 (User, SELECTS, Step 23: EditBox Clear & Enter)
 
-PAGE: Unknown
+PAGE: Debug Configuration
 Click the 'Run' button in the Debug Configuration modal.
 (User, CLICKS, Run)
 (Run, IS_IN, Debug Configuration)
@@ -758,11 +758,11 @@ Click the 'Run' button in the Debug Configuration modal.
 
 -- TC038: Test Resume After Step Debug Mode Type in Debug Configuration Modal 
 
-PAGE: Unknown
+PAGE: Test Studio
 Navigate to https://automate.nogrunt.com/new/test-studio
 (User, NAVIGATES_TO, https://automate.nogrunt.com/new/test-studio)
 
-PAGE: Test Studio
+PAGE: Debug Configuration
 Locate and click the 'Execute in Debug Mode' button to open the Debug Configuration modal
 (User, CLICKS, Execute in Debug Mode)
 
@@ -773,6 +773,8 @@ Locate and toggle the 'Enable Debug Mode' switch to ON
 PAGE: Debug Configuration
 Locate and click the 'Resume After Step' radio button to select the Resume After Step debug mode type
 (User, CLICKS, Resume After Step)
+(User, SELECTS, Resume After Step debug mode type)
+[Resume After Step :: Button]
 
 PAGE: Debug Configuration
 Locate and click the 'Select step to go to dropdown' In the dropdown, select 'Step 23: EditBox Clear & Enter' as the target step
@@ -781,5 +783,4 @@ Locate and click the 'Select step to go to dropdown' In the dropdown, select 'St
 PAGE: Debug Configuration
 Locate and click the 'Run' button to start debug execution in Resume After Step mode
 (User, CLICKS, Run)
-
-
+(Run, STARTS, Debug Execution)
