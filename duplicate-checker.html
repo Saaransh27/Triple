@@ -803,7 +803,7 @@ body {
       <div class="toolbar-right">
         <button class="btn-sm" onclick="expandAll()">Expand all</button>
         <button class="btn-sm" onclick="collapseAll()">Collapse all</button>
-        <button class="btn-sm" onclick="exportCSV()" style="border-color:var(--accent-border);color:var(--accent)">&#8595; Export CSV</button>
+        <button class="btn-sm" onclick="exportJSON()" style="border-color:var(--accent-border);color:var(--accent)">&#8595; Export JSON</button>
       </div>
     </div>
 
@@ -1241,9 +1241,57 @@ function parseFile(text) {
     currentStep = null;
   }
 
+  function urlToPageName(url) {
+    const slug = url.replace(/[.,;:!?]+$/, '').split('/').pop();
+    if (!slug) return null;
+    return slug.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  function inferPageFromStep(step) {
+    // "in the 'X' modal" or "in the X modal" — step is inside a modal
+    const inModalMatch = step.requirement.match(/\bin (?:the )?['"]?([A-Za-z][^'"]+?)['"]? modal/i);
+    if (inModalMatch) return inModalMatch[1].trim();
+
+    // "on the https://... page" or "at the https://... page" in requirement text
+    const onUrlMatch = step.requirement.match(/(?:on|at)\s+(?:the\s+)?https?:\/\/(\S+)\s+page/i);
+    if (onUrlMatch) {
+      const name = urlToPageName('https://' + onUrlMatch[1]);
+      if (name) return name;
+    }
+    // IS_ON triple with a URL object — indicates the current step is on that page
+    // (NAVIGATES_TO is intentionally excluded: those steps are in transit, current page is unknown)
+    for (const t of step.triples) {
+      const m = t.match(/,\s*IS_ON,\s*(https?:\/\/[^\s)]+)/i);
+      if (m) {
+        const name = urlToPageName(m[1]);
+        if (name) return name;
+      }
+    }
+    return null;
+  }
+
+  function resolveUnknownPages(steps) {
+    // First pass: infer from step text / triples
+    for (const step of steps) {
+      if (step.page === 'Unknown') {
+        const inferred = inferPageFromStep(step);
+        if (inferred) step.page = inferred;
+      }
+    }
+    // Second pass: carry forward last known page to remaining Unknown steps
+    let lastKnown = null;
+    for (const step of steps) {
+      if (step.page !== 'Unknown') lastKnown = step.page;
+      else if (lastKnown) step.page = lastKnown;
+    }
+  }
+
   function flushTC() {
     flushStep();
-    if (currentTC && currentTC.steps.length > 0) testCases.push(currentTC);
+    if (currentTC && currentTC.steps.length > 0) {
+      resolveUnknownPages(currentTC.steps);
+      testCases.push(currentTC);
+    }
     currentTC = null;
   }
 
@@ -1273,7 +1321,7 @@ function parseFile(text) {
     }
 
     if (isPage(l)) {
-      currentPage = l.replace(/PAGE\s*:/i, '').trim();
+      currentPage = l.replace(/PAGE\s*:/i, '').trim().replace(/[.,;:!?]+$/, '');
       continue;
     }
 
@@ -1605,6 +1653,68 @@ function exportCSV() {
   const a    = document.createElement("a");
   a.href     = url;
   a.download = "duplicate_check_results.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── JSON export ───────────────────────────────────────────────────
+
+function extractElement(step) {
+  // Primary triple: subject is "User" — element is the object (non-User side)
+  const primaryTriples = step.triples.filter(t => {
+    const inner = t.replace(/^\(|\)$/g, '');
+    return inner.split(',')[0].trim().toLowerCase() === 'user';
+  });
+
+  if (primaryTriples.length > 0) {
+    const inner = primaryTriples[0].replace(/^\(|\)$/g, '');
+    const parts  = inner.split(',').map(p => p.trim());
+    // parts[0]=User, parts[1]=predicate, parts[2+]=object
+    if (parts.length >= 3) {
+      return { element: parts.slice(2).join(', '), type: 'primary' };
+    }
+  }
+
+  // No primary triple — use subject of first secondary triple
+  const secondaryTriples = step.triples.filter(t => {
+    const inner = t.replace(/^\(|\)$/g, '');
+    return inner.split(',')[0].trim().toLowerCase() !== 'user';
+  });
+
+  if (secondaryTriples.length > 0) {
+    const inner = secondaryTriples[0].replace(/^\(|\)$/g, '');
+    const parts  = inner.split(',').map(p => p.trim());
+    if (parts.length >= 1) {
+      return { element: parts[0], type: 'secondary' };
+    }
+  }
+
+  return { element: '', type: '' };
+}
+
+function exportJSON() {
+  if (!allData.length) return;
+
+  const output = [];
+  for (const tc of allData) {
+    for (const step of tc.steps) {
+      const { element, type } = extractElement(step);
+      output.push({
+        test_case: tc.title,
+        step:      step.requirement,
+        page:      (step.page && step.page !== 'Unknown') ? step.page : '',
+        element,
+        type
+      });
+    }
+  }
+
+  const json = JSON.stringify(output, null, 2);
+  const blob = new Blob([json], { type: 'application/json;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'test_cases_export.json';
   a.click();
   URL.revokeObjectURL(url);
 }
