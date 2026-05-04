@@ -618,4 +618,79 @@ async def update_elem_dict_entry(key: str, body: dict):
     return {"ok": True}
 
 
+
+# ── Integrated analyser helpers (token-aware) ─────────────────────────────────
+
+async def _gemini_with_tokens(prompt: str, max_tokens: int = 512) -> tuple[str, int, int]:
+    if not GEMINI_API_KEY:
+        raise HTTPException(status_code=500, detail="GEMINI_API_KEY not configured")
+    payload = {"contents": [{"parts": [{"text": prompt}]}],
+               "generationConfig": {"temperature": 0, "maxOutputTokens": max_tokens}}
+    async with httpx.AsyncClient(timeout=30) as client:
+        resp = await client.post(f"{GEMINI_URL}?key={GEMINI_API_KEY}", json=payload)
+    if not resp.is_success:
+        raise HTTPException(status_code=500, detail=f"Gemini error: {resp.text}")
+    try:
+        data         = resp.json()
+        text         = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+        usage        = data.get("usageMetadata", {})
+        input_tokens = usage.get("promptTokenCount", 0)
+        output_tokens= usage.get("candidatesTokenCount", 0)
+        return text, input_tokens, output_tokens
+    except (KeyError, IndexError):
+        raise HTTPException(status_code=500, detail=f"Unexpected response: {resp.text}")
+
+
+async def extract_triples_with_tokens(requirement: str) -> tuple[dict, int, int]:
+    cleaned = re.sub(r'(https?://\S+)\s+page\.?', r'\1', requirement, flags=re.IGNORECASE).strip()
+    content, input_tokens, output_tokens = await _gemini_with_tokens(f"{SYSTEM_PROMPT}\n\nInput: {cleaned}")
+    triples, annotations = [], []
+    for line in content.splitlines():
+        line = line.strip()
+        if line.startswith("(") and line.endswith(")"):
+            triples.append(line)
+        elif line.startswith("[") and line.endswith("]") and "::" in line:
+            annotations.append(line)
+    if not triples:
+        raise HTTPException(status_code=500, detail=f"No triples found: {content}")
+    return {"triples": triples, "annotations": annotations}, input_tokens, output_tokens
+
+
+@app.post("/api/analyze-excel")
+async def analyze_excel_integrated(file: UploadFile = File(...)):
+    if not file.filename.endswith((".xlsx", ".xls")):
+        raise HTTPException(status_code=400, detail="Only .xlsx files are accepted")
+    test_cases = parse_excel(await file.read())
+    if not test_cases:
+        raise HTTPException(status_code=400, detail="No valid test cases found in Excel")
+
+    all_results   = []
+    input_tokens  = 0
+    output_tokens = 0
+
+    for tc in test_cases:
+        tc_results = []
+        for step in tc["steps"]:
+            if len(step.strip()) < 10 or not re.search(r'[a-zA-Z]{3,}', step):
+                tc_results.append({"requirement": step, "triples": [], "annotations": [],
+                                   "error": "Skipped — fragment or incomplete step"})
+                continue
+            try:
+                result, inp, out = await extract_triples_with_tokens(step)
+                input_tokens  += inp
+                output_tokens += out
+                tc_results.append({"requirement": step, **result, "error": None})
+            except Exception as e:
+                tc_results.append({"requirement": step, "triples": [], "annotations": [], "error": str(e)})
+
+        all_results.append({"test_case": tc["title"], "results": infer_page_context(tc_results)})
+
+    return {
+        "test_cases":    all_results,
+        "input_tokens":  input_tokens,
+        "output_tokens": output_tokens,
+        "total_tokens":  input_tokens + output_tokens,
+    }
+
+
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
